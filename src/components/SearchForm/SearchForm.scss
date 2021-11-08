@@ -45,7 +45,7 @@
     border-radius: 100%;
     background-image: url('../../images/icons/delete.svg');
     background-size: 10px;
-    background-position: center left 7.5px;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: $color_white;
     transition: $transition_linear;
@@ -76,6 +76,10 @@
   &_action_sort {
     mask-image: url('../../images/icons/select.svg');
     mask-size: 20px 12px;
+  }
+
+  &_active {
+    background-color: $color_bright;
   }
 }
 
