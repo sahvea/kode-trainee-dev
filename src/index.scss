@@ -1,3 +1,8 @@
 @import './vendor/normalize.scss';
 @import './vendor/fonts/fonts.scss';
+
+@import './style/variables';
+@import './style/breakpoints';
+
 @import './components/App/App.scss';
+
