@@ -29,7 +29,7 @@
 - [x] подключить шрифты (~5 мин | 10 мин)
 - [x] вытащить из макета необходимые изображения, оптимизировать их (~5 мин | 15 мин)
 - [x] добавить фавиконку (~10 мин | 10 мин)
-- [ ] установить необходимые пакеты, например [skeleton loading](https://www.npmjs.com/package/react-loading-skeletonhttps://www.npmjs.com/package/react-loading-skeleton) (~5 мин)
+- [x] установить необходимые пакеты, например [skeleton loading](https://www.npmjs.com/package/react-loading-skeletonhttps://www.npmjs.com/package/react-loading-skeleton) (~5 мин | 5 мин)
 - [ ] сверстать блоки:
   * [ ] интуп поиска с кнопкой "сортировка" (~100 мин)
   * [ ] панель вкладок (~90 мин)
