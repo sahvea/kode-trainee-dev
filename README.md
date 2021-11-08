@@ -1,4 +1,5 @@
 # kode-trainee-dev
+[![wakatime](https://wakatime.com/badge/user/b5c7ce6c-3494-4300-a39b-cb93931f8283/project/b6c1c254-c85c-4600-b55c-4d5c3355c089.svg)](https://wakatime.com/badge/user/b5c7ce6c-3494-4300-a39b-cb93931f8283/project/b6c1c254-c85c-4600-b55c-4d5c3355c089)
 
 Тестовое задание для [KODE](https://kode.ru/) в виде небольшого приложения, в котором есть всего по чуть-чуть: верстки, работы с API, преобразование данных и т.д.
 
