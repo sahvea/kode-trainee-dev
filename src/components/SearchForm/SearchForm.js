@@ -1,4 +1,4 @@
-function SearchForm() {
+function SearchForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +16,7 @@ function SearchForm() {
             placeholder="Введи имя, тег, почту..."
             minLength="2"
           />
-          <button className="app__button search__btn search__btn_action_sort" type="button" aria-label="Сортировка" title="Сортировка"/>
+          <button className="app__button search__btn search__btn_action_sort" type="button" aria-label="Сортировка" title="Сортировка" onClick={props.onSortBnt} />
         </div>
         {/* {validityError && <p className="search__error">{validityError}</p>} */}
       </fieldset>
