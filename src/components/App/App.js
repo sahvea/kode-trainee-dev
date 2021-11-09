@@ -6,7 +6,6 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 import Staff from '../Staff/Staff';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
 
   function openModalWindow() {
