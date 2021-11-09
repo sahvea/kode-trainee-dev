@@ -1,32 +1,42 @@
+import criticalErrorImg from '../images/flying-saucer.png';
+import searchErrorImg from '../images/magnifying-glass.png';
+
 export const tabArray = [
   {
     id: 0,
     name: 'Все',
-    isActive: true,
   },
   {
     id: 1,
     name: 'Designers',
-    isActive: false,
   },
   {
     id: 2,
     name: 'Analysts',
-    isActive: false,
   },
   {
     id: 3,
     name: 'Managers',
-    isActive: false,
   },
   {
     id: 4,
     name: 'iOS',
-    isActive: false,
   },
   {
     id: 5,
     name: 'Android',
-    isActive: false,
   },
 ];
+
+export const errorInfoConfig = {
+  critical: {
+    img: criticalErrorImg,
+    title: 'Какой-то сверхразум все сломал',
+    subtitle: 'Постараемся быстро починить',
+  },
+  search: {
+    img: searchErrorImg,
+    title: 'Мы никого не нашли',
+    subtitle: 'Попробуй скорректировать запрос',
+  },
+};
