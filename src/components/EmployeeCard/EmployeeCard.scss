@@ -14,17 +14,12 @@
   }
 }
 
-.employee__avatar-wrap {
+.employee__avatar {
   width: 72px;
   height: 72px;
+  object-fit: cover;
   border-radius: 100%;
   overflow: hidden;
-}
-
-.employee__avatar {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }
 
 .employee__info {
