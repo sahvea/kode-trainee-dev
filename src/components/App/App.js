@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import Skeleton from 'react-loading-skeleton'
-// import 'react-loading-skeleton/dist/skeleton.css'
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
@@ -9,11 +7,12 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = React.useState(false);
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
   // eslint-disable-next-line no-unused-vars
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
-
 
 
   function openModalWindow() {
@@ -55,6 +54,7 @@ function App() {
         <Route path="/"
           element={
             <Main
+              isLoading={isLoading}
               openModalWindow={openModalWindow}
               setSearchError={setIsSearchError}
               isCriticalError={isCriticalError}

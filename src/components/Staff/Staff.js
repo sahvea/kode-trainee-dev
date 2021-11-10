@@ -1,12 +1,12 @@
 import Divider from '../Divider/Divider';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 
-function Staff() {
+function Staff(props) {
   return (
     <section className="staff app__section">
       <ul className="staff__list">
         <li className="staff__list-item">
-          <EmployeeCard />
+          <EmployeeCard isLoading={props.isLoading} />
         </li>
       </ul>
       <Divider year={'2022'} />

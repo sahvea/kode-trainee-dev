@@ -15,12 +15,12 @@ function Main(props) {
         {
           ( props.isCriticalError || props.isSearchError )
           ? <ErrorSection
-          criticalError={props.isCriticalError}
-          img={props.isCriticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img}
-          error={props.isCriticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title}
-          info={props.isCriticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle}
-          />
-          : <Staff />
+              criticalError={props.isCriticalError}
+              img={props.isCriticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img}
+              error={props.isCriticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title}
+              info={props.isCriticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle}
+            />
+          : <Staff isLoading={props.isLoading}/>
         }
       </main>
     </>
