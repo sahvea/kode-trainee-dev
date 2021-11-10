@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import avatar from '../../images/avatar-plug.png';
+import { getAge } from '../../utils/utils';
 
 function EmployeeCard(props) {
   const employeeData = {
@@ -8,12 +9,12 @@ function EmployeeCard(props) {
     nickname: props.employee.userTag,
     department: props.employee.department,
     post: props.employee.position,
-    birthdate: props.employee.birthday,
+    birthDate: props.employee.birthday,
     phone: props.employee.phone
   };
 
   const employeeNickname = employeeData.nickname.toLowerCase();
-
+  // const employeeAge = `${getAge(employeeData.birthDate)} `;
 
   return (
     <article className="employee">
