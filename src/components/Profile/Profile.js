@@ -13,7 +13,7 @@ function Profile(props) {
           <img className="profile__avatar employee__avatar" src={props.avatar || avatar} alt={props.name} />
           <div className="profile__info employee__info">
             <p className="profile__name employee__name">Павел Волков</p>
-            <p className="profile__department employee__department">vp</p>
+            <p className="profile__nickname employee__nickname">vp</p>
             <p className="profile__post employee__post">Art–Director</p>
           </div>
         </section>

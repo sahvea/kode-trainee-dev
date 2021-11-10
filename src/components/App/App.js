@@ -4,15 +4,38 @@ import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import ModalWindow from '../ModalWindow/ModalWindow';
+import { api } from '../../utils/api';
+
 
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = React.useState(false);
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
+  const [staffMembers, setStaffMembers] = React.useState([]);
+
+
+
+  React.useEffect(() => {
+    setIsLoading(true);
+
+    api.get('/users')
+      .then(res => {
+        setStaffMembers(res.data.items);
+      })
+      .catch(err => {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log('Error', err.message);
+        }
+        setIsCriticalError(true);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
 
 
   function openModalWindow() {
@@ -55,6 +78,7 @@ function App() {
           element={
             <Main
               isLoading={isLoading}
+              staffMembers={staffMembers}
               openModalWindow={openModalWindow}
               setSearchError={setIsSearchError}
               isCriticalError={isCriticalError}

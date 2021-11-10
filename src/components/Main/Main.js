@@ -20,7 +20,7 @@ function Main(props) {
               error={props.isCriticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title}
               info={props.isCriticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle}
             />
-          : <Staff isLoading={props.isLoading}/>
+          : <Staff isLoading={props.isLoading} staffMembers={props.staffMembers} />
         }
       </main>
     </>
