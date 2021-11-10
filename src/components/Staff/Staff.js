@@ -3,6 +3,7 @@ import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import SkeletonCard from '../SkeletonCard/SkeletonCard';
 
 function Staff(props) {
+  const staffMembers = props.staffMembers.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
   return (
     <section className="staff app__section">
@@ -10,7 +11,7 @@ function Staff(props) {
         {
           props.isLoading
             ? <SkeletonCard />
-            : props.staffMembers.map(item => (
+            : staffMembers.map(item => (
               <li className="staff__list-item" key={item.id}>
                 <EmployeeCard
                   employee={item}

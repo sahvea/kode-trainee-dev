@@ -1,14 +1,7 @@
 import criticalErrorImg from '../images/flying-saucer.png';
 import searchErrorImg from '../images/magnifying-glass.png';
 
-// const axios = require('axios');
 export const API_URL = 'https://stoplight.io/mocks/kode-education/trainee-test/25143926';
-
-// export const api = axios.create({
-//   method: 'GET',
-//   url: `${API_URL}/users`,
-//   headers: {'Content-Type': 'application/json'}
-// });
 
 export const errorInfoConfig = {
   critical: {
