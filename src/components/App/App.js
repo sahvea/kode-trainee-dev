@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
+// import NotFound from '../NotFound/NotFound';
 
 import { errorInfoConfig } from '../../utils/constants';
 
@@ -70,6 +71,8 @@ function App() {
 
       <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} />
     </>
+
+    // <NotFound />
   );
 }
 
