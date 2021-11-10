@@ -1,3 +1,4 @@
+import Divider from '../Divider/Divider';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 
 function Staff() {
@@ -8,6 +9,7 @@ function Staff() {
           <EmployeeCard />
         </li>
       </ul>
+      <Divider year={'2022'} />
     </section>
   );
 }
