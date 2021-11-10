@@ -1,14 +1,12 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 // import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import Header from '../Header/Header';
+// import 'react-loading-skeleton/dist/skeleton.css'
+import Main from '../Main/Main';
+import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound';
 import ModalWindow from '../ModalWindow/ModalWindow';
-import Staff from '../Staff/Staff';
-import ErrorSection from '../ErrorSection/ErrorSection';
-// import NotFound from '../NotFound/NotFound';
 
-import { errorInfoConfig } from '../../utils/constants';
-// import Profile from '../Profile/Profile';
 
 function App() {
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
@@ -53,27 +51,24 @@ function App() {
 
   return (
     <>
-      <Header
-        onSortBnt={openModalWindow}
-        setSearchError={setIsSearchError}
-      />
-      <main>
-        {
-          ( isCriticalError || isSearchError )
-            ? <ErrorSection
-                criticalError={isCriticalError}
-                img={isCriticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img}
-                error={isCriticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title}
-                info={isCriticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle}
-              />
-            : <Staff />
-        }
-      </main>
+      <Routes>
+        <Route path="/"
+          element={
+            <Main
+              openModalWindow={openModalWindow}
+              setSearchError={setIsSearchError}
+              isCriticalError={isCriticalError}
+              isSearchError={isSearchError}
+            />}
+        />
+
+        <Route path="/profile" element={<Profile />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
       <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} />
     </>
-    // <Profile />
-    // <NotFound />
   );
 }
 
