@@ -8,6 +8,7 @@ import ErrorSection from '../ErrorSection/ErrorSection';
 // import NotFound from '../NotFound/NotFound';
 
 import { errorInfoConfig } from '../../utils/constants';
+// import Profile from '../Profile/Profile';
 
 function App() {
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
@@ -71,7 +72,7 @@ function App() {
 
       <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} />
     </>
-
+    // <Profile />
     // <NotFound />
   );
 }

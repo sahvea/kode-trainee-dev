@@ -3,7 +3,7 @@ import EmployeeCard from '../EmployeeCard/EmployeeCard';
 
 function Staff() {
   return (
-    <section className="staff">
+    <section className="staff app__section">
       <ul className="staff__list">
         <li className="staff__list-item">
           <EmployeeCard />

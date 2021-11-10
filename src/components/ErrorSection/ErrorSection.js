@@ -4,7 +4,7 @@ function ErrorSection(props) {
   }
 
   return (
-    <section className="error">
+    <section className="error app__section">
       <img className="error__img" src={props.img} alt="произошла ошибка" />
       <h2 className="error__title">{props.error}</h2>
       <p className="error__subtitle">{props.info}</p>

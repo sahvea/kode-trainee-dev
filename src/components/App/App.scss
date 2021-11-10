@@ -1,16 +1,20 @@
 .app {
-  font-family: $Inter;
-  color: $color_font_primary;
   min-width: $container_min-width;
-  max-width: $container_max-width;
   margin: 0 auto;
-  padding: 8px 16px 0;
   background-color: $color_white;
   box-sizing: border-box;
+  font-family: $Inter;
+  color: $color_font_primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+}
+
+.app__section {
+  margin: 0 auto;
+  max-width: $container_max-width;
+  padding: 0 16px;
 }
 
 .app__button {

@@ -1,0 +1,18 @@
+.navigation {
+  padding: 10px 24px 14px;
+}
+
+.navigation__link {
+  display: block;
+  width: 24px;
+  height: 24px;
+  mask-image: url('../../images/icons/arrow-left.svg');
+  mask-size: 6.5px auto;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  background-color: $color_font_primary;
+
+  &:hover {
+    background-color: $color_bright;
+  }
+}
