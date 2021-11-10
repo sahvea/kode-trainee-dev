@@ -24,7 +24,7 @@ function Profile(props) {
               <p className="profile__age">24 года</p>
             </li>
             <li className="profile__contact-list-item">
-              <a href={`tel:${props.phoneNumber}`} className="profile__link profile__personal-data profile__personal-data_type_tel">+7 (999) 900 90 90</a>
+              <a href={`tel:${props.phoneNumber}`} className="profile__link app__link profile__personal-data profile__personal-data_type_tel">+7 (999) 900 90 90</a>
             </li>
           </ul>
         </section>

@@ -13,6 +13,7 @@
   background-color: $color_font_primary;
 
   &:hover {
+    opacity: 1;
     background-color: $color_bright;
   }
 }

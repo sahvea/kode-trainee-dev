@@ -105,10 +105,9 @@
 }
 
 .profile__link {
-  text-decoration: none;
-  transition: $transition_linear;
 
   &:hover {
+    opacity: 1;
     color: $color_bright;
   }
 

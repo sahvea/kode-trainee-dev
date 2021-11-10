@@ -44,3 +44,12 @@
     opacity: .7;
   }
 }
+
+.app__link {
+  text-decoration: none;
+  transition: $transition_linear;
+
+  &:hover {
+    opacity: .8;
+  }
+}
