@@ -1,6 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import avatar from '../../images/avatar-plug.png';
-import { getAge } from '../../utils/utils';
 
 function EmployeeCard(props) {
   const employeeData = {
@@ -9,12 +9,39 @@ function EmployeeCard(props) {
     nickname: props.employee.userTag,
     department: props.employee.department,
     post: props.employee.position,
-    birthDate: props.employee.birthday,
+    birthDate: new Date(props.employee.birthday),
     phone: props.employee.phone
   };
 
   const employeeNickname = employeeData.nickname.toLowerCase();
-  // const employeeAge = `${getAge(employeeData.birthDate)} `;
+  const employeeBirthDate = employeeData.birthDate
+                              .toLocaleString('ru', {day: 'numeric', month: 'short'})
+                              .split('.').join('');
+
+  // const dateArray = Array.from(employeeData.birthDate);
+  // const sorterEmployeeData = dateArray.sort((a, b) => b.birthDate - a.birthDate);
+
+
+  // React.useEffect(() => {
+
+  //   function findUpcomingBirthday(dataString) {
+  //     const currentYear = new Date().getFullYear();
+  //     const birthDate = new Date(dataString);
+  //     let year;
+
+  //     const age = currentYear - birthDate.getFullYear();
+  //     const currentBirthday = birthDate.getFullYear() + age;
+
+  //     if (currentBirthday > currentYear) {
+  //       year = currentYear + 1;
+  //     }
+
+  //   }
+
+  //   findUpcomingBirthday(props.employee.birthday);
+
+  //   console.log(findUpcomingBirthday(props.employee.birthday));
+  // }, [props.employee.birthday]);
 
   return (
     <article className="employee">
@@ -25,7 +52,7 @@ function EmployeeCard(props) {
         <p className="employee__nickname">{employeeNickname}</p>
         <p className="employee__post">{employeeData.post}</p>
       </Link>
-      { props.birthdate && <p className="employee__birthdate">{employeeData.birthdate}</p> }
+      { employeeBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
     </article>
   );
 }
