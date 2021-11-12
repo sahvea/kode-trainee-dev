@@ -22,25 +22,31 @@ export const tabArray = [
   {
     id: 0,
     name: 'Все',
+    tag: 'all',
   },
   {
     id: 1,
     name: 'Designers',
+    tag: 'design',
   },
   {
     id: 2,
     name: 'Analysts',
+    tag: 'analytics',
   },
   {
     id: 3,
     name: 'Managers',
+    tag: 'management',
   },
   {
     id: 4,
     name: 'iOS',
+    tag: 'ios',
   },
   {
     id: 5,
     name: 'Android',
+    tag: 'android',
   },
 ];

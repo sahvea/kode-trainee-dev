@@ -5,8 +5,9 @@ import TabBarItem from '../TabBarItem/TabBarItem';
 function TabBar(props) {
   const [selectedTab, setSelectedTab] = React.useState(0);
 
-  function handleTabClick(id) {
+  function handleTabClick(id, tag) {
     setSelectedTab(id);
+    props.setActiveTab(tag);
   }
 
   return (
@@ -17,6 +18,7 @@ function TabBar(props) {
             <TabBarItem
               key={item.id}
               id={item.id}
+              tag={item.tag}
               name={item.name}
               active={selectedTab}
               onClick={handleTabClick}

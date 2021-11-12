@@ -3,9 +3,20 @@ import Header from '../Header/Header';
 import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
 import { errorInfoConfig } from '../../utils/constants';
+import { filterArrayByDepartament } from '../../utils/utils';
 
 
 function Main(props) {
+  const [activeTab, setActiveTab] = React.useState('all');
+  const [staffMembers, setStaffMembers] = React.useState([]);
+
+  React.useEffect(() => {
+    if (activeTab !== 'all') {
+      setStaffMembers(filterArrayByDepartament(props.staffMembers, activeTab));
+    } else {
+      setStaffMembers(props.staffMembers);
+    }
+  }, [activeTab, props]);
 
   return (
     <>
@@ -13,6 +24,7 @@ function Main(props) {
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}
         isSortByBirthday={props.isSortByBirthday}
+        setActiveTab={setActiveTab}
       />
       <main>
         {
@@ -25,7 +37,7 @@ function Main(props) {
             />
           : <Staff
               isLoading={props.isLoading}
-              staffMembers={props.staffMembers}
+              staffMembers={staffMembers}
               isSortByBirthday={props.isSortByBirthday}
             />
         }

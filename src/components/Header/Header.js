@@ -12,7 +12,7 @@ function Header(props) {
         isSortByBirthday={props.isSortByBirthday}
       />
 
-      <TabBar array={tabArray} />
+      <TabBar array={tabArray} setActiveTab={props.setActiveTab} />
     </header>
   );
 }

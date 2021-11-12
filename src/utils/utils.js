@@ -25,3 +25,10 @@ export function sortArrayByBirthday(dateStringA, dateStringB) {
     return birthDateA.getDate() - birthDateB.getDate();
   }
 }
+
+export function filterArrayByDepartament(arr, tag) {
+  const lowerCaseTag = tag.toLowerCase();
+
+  const result = arr.filter(el => el.department.toLowerCase().includes(lowerCaseTag));
+  return result;
+}
