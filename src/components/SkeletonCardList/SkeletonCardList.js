@@ -1,9 +1,9 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-function SkeletonCard() {
+function SkeletonCardList() {
   return (
-    <>
+    <ul className="staff__list">
       {Array(10)
         .fill()
         .map((item, index) => (
@@ -23,8 +23,8 @@ function SkeletonCard() {
           </li>
         ))
       }
-    </>
+    </ul>
   );
 }
 
-export default SkeletonCard;
+export default SkeletonCardList;

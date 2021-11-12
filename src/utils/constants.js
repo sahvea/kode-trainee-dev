@@ -3,6 +3,8 @@ import searchErrorImg from '../images/magnifying-glass.png';
 
 export const API_URL = 'https://stoplight.io/mocks/kode-education/trainee-test/25143926';
 
+export const nextYear = new Date().getFullYear()+1;
+
 export const errorInfoConfig = {
   critical: {
     img: criticalErrorImg,

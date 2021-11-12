@@ -1,45 +1,82 @@
 // import Divider from '../Divider/Divider';
 import React from 'react';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
-import SkeletonCard from '../SkeletonCard/SkeletonCard';
-// import Divider from '../Divider/Divider';
-import { sortByAlphabet, sortByBirthday } from '../../utils/utils';
+import SkeletonCardList from '../SkeletonCardList/SkeletonCardList';
+import Divider from '../Divider/Divider';
+import { sortArrayByBirthday } from '../../utils/utils';
+import { nextYear } from '../../utils/constants';
 
 function Staff(props) {
-  const arraySortedByAlphabet = props.staffMembers.sort(sortByAlphabet);
-  const arraySortedByBirthday = props.staffMembers.sort(sortByBirthday);
-  const [staffArraySorted, setStaffArraySorted] = React.useState([]);
+  const arraySortedByAlphabet = props.staffMembers.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
+  const [thisYearBirthdays, nextYearBirthdays] = props.staffMembers
+    .reduce((result, element) => {
+      const today = new Date();
+      const birthDate = new Date(element.birthday);
 
-  React.useEffect(() => {
-    if (props.isSortByBirthday) {
-      setStaffArraySorted(arraySortedByBirthday);
-    }
-    else {
-      setStaffArraySorted(arraySortedByAlphabet);
-    }
+      result[
+        birthDate.getMonth() < today.getMonth()
+        || (birthDate.getMonth() === today.getMonth() && birthDate.getDate() < today.getDate())
+          ? 1
+          : 0
+      ].push(element);
 
-    console.log(staffArraySorted);
+      return result;
+    }, [
+      [], [] // по дефолту массивы thisYearBirthdays/nextYearBirthdays пусты
+    ]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.isSortByBirthday, props.staffMembers]);
+  const staffArrayWithBdThisYear = thisYearBirthdays.sort(sortArrayByBirthday);
+  const staffArrayWithBdNextYear = nextYearBirthdays.sort(sortArrayByBirthday);
+
 
   return (
     <section className="staff app__section">
-      <ul className="staff__list">
-        {
-          props.isLoading
-            ? <SkeletonCard />
-            : staffArraySorted.map(item => (
-              <li className="staff__list-item" key={item.id}>
-                <EmployeeCard
-                  employee={item}
-                />
-              </li>
-            ))
-        }
-      </ul>
-      {/* {isNextYear && <Divider year={'2022'} /> } */}
+      {
+        props.isLoading
+          ? <SkeletonCardList />
+          : props.isSortByBirthday
+            ? <>
+                <ul className="staff__list THIS_YEAR">
+                  { staffArrayWithBdThisYear.map(item => (
+                      <li className="staff__list-item" key={item.id}>
+                        <EmployeeCard
+                          employee={item}
+                          isBirthDate={true}
+                        />
+                      </li>
+                  )) }
+                </ul>
+
+                { staffArrayWithBdNextYear &&
+                  <>
+                    <Divider year={nextYear} />
+
+                    <ul className="staff__list NEXT_YEAR">
+                      { staffArrayWithBdNextYear.map(item => (
+                        <li className="staff__list-item" key={item.id}>
+                            <EmployeeCard
+                              employee={item}
+                              isBirthDate={true}
+                            />
+                          </li>
+                      )) }
+                    </ul>
+                  </>
+                }
+              </>
+
+            : <ul className="staff__list ALPHABET">
+                { arraySortedByAlphabet.map(item => (
+                  <li className="staff__list-item" key={item.id}>
+                    <EmployeeCard
+                      employee={item}
+                      isBirthDate={false}
+                    />
+                  </li>
+                )) }
+              </ul>
+      }
     </section>
   );
 }

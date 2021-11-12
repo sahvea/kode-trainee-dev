@@ -18,10 +18,6 @@ function EmployeeCard(props) {
                               .toLocaleString('ru', {day: 'numeric', month: 'short'})
                               .split('.').join('');
 
-  function showData() {
-    console.log(props.employee.birthday);
-  }
-
   return (
     <article className="employee">
       <img className="employee__avatar" src={employeeData.avatar} alt={employeeData.name} />
@@ -31,7 +27,7 @@ function EmployeeCard(props) {
         <p className="employee__nickname">{employeeNickname}</p>
         <p className="employee__post">{employeeData.post}</p>
       </Link>
-      { employeeBirthDate && <p className="employee__birthdate" onClick={showData}>{employeeBirthDate}</p> }
+      { props.isBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
     </article>
   );
 }
