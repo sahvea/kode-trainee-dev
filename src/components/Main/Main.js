@@ -16,19 +16,21 @@ function Main(props) {
     } else {
       setStaffMembers(props.staffMembers);
     }
-  }, [activeTab, props]);
+  }, [activeTab, props.staffMembers]);
 
   return (
     <>
       <Header
+        onSearch={props.onSearch}
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}
         isSortByBirthday={props.isSortByBirthday}
         setActiveTab={setActiveTab}
+        isLoading={props.isLoading}
       />
       <main>
         {
-          ( props.isCriticalError || props.isSearchError )
+          ( props.isCriticalError || props.isSearchError || (!props.isLoading && staffMembers.length <= 0) )
           ? <ErrorSection
               criticalError={props.isCriticalError}
               img={props.isCriticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img}

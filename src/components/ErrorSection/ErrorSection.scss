@@ -1,6 +1,6 @@
 .error {
   width: 100%;
-  height: calc(100vh - 160px);
+  height: calc(100vh - #{$header_height});
   display: flex;
   flex-direction: column;
   justify-content: center;

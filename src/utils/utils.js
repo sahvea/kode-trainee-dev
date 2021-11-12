@@ -32,3 +32,17 @@ export function filterArrayByDepartament(arr, tag) {
   const result = arr.filter(el => el.department.toLowerCase().includes(lowerCaseTag));
   return result;
 }
+
+export function filterArrayByName(arr, keyword) {
+  const lowerCaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
+
+  const result = arr.filter(item => {
+    return (
+      item.firstName.toLowerCase().includes(lowerCaseKeyword) ||
+      item.lastName.toLowerCase().includes(lowerCaseKeyword) ||
+      item.userTag.toLowerCase().includes(lowerCaseKeyword)
+    );
+  });
+
+  return result;
+}

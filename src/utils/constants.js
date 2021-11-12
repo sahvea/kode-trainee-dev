@@ -18,6 +18,10 @@ export const errorInfoConfig = {
   },
 };
 
+export const infoMessages = {
+  searchInputEmpty: 'Необходимо ввести ключевое слово.',
+}
+
 export const tabArray = [
   {
     id: 0,

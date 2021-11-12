@@ -54,11 +54,12 @@
 }
 
 .search__error {
-  margin: 0 auto;
+  margin: 5px 0 0;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.2;
   color: $color_error;
+  text-align: center;
 }
 
 .search__btn {

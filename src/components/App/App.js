@@ -5,6 +5,7 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { api } from '../../utils/api';
+import { filterArrayByName } from '../../utils/utils';
 
 
 
@@ -14,8 +15,9 @@ function App() {
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
   const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
+  const [isSearched, setIsSearched] = React.useState(false);
   const [staffMembers, setStaffMembers] = React.useState([]);
-
+  const [searchedStaffMembers, setSearchedStaffMembers] = React.useState([]);
 
 
   React.useEffect(() => {
@@ -37,6 +39,17 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  function handleSearch(keyword) {
+    const filteredStaffMembers = filterArrayByName(staffMembers, keyword);
+    setSearchedStaffMembers(filteredStaffMembers);
+
+    if (!keyword) {
+      setIsSearched(false);
+    } else {
+      setIsSearched(true);
+    }
+  }
 
 
   function openModalWindow() {
@@ -79,12 +92,13 @@ function App() {
           element={
             <Main
               isLoading={isLoading}
-              staffMembers={staffMembers}
+              staffMembers={isSearched ? searchedStaffMembers : staffMembers}
               openModalWindow={openModalWindow}
               setSearchError={setIsSearchError}
-              isCriticalError={isCriticalError}
               isSearchError={isSearchError}
+              isCriticalError={isCriticalError}
               isSortByBirthday={isBdaySortChecked}
+              onSearch={handleSearch}
             />}
         />
 
