@@ -1,4 +1,3 @@
-// import Divider from '../Divider/Divider';
 import React from 'react';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import SkeletonCardList from '../SkeletonCardList/SkeletonCardList';
@@ -48,18 +47,18 @@ function Staff(props) {
                   )) }
                 </ul>
 
-                { staffArrayWithBdNextYear &&
+                { staffArrayWithBdNextYear.length > 0 &&
                   <>
                     <Divider year={nextYear} />
 
                     <ul className="staff__list">
                       { staffArrayWithBdNextYear.map(item => (
                         <li className="staff__list-item" key={item.id}>
-                            <EmployeeCard
-                              employee={item}
-                              isBirthDate={true}
-                            />
-                          </li>
+                          <EmployeeCard
+                            employee={item}
+                            isBirthDate={true}
+                          />
+                        </li>
                       )) }
                     </ul>
                   </>
