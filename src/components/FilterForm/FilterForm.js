@@ -6,6 +6,8 @@ function FilterForm(props) {
   function handleRadioClick() {
     setIsBdayChecked(!isBdayChecked);
     props.setChecked(!isBdayChecked);
+
+    props.onModalWindowCLose();
   }
 
   return (
