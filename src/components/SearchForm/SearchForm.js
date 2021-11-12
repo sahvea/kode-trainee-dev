@@ -1,4 +1,5 @@
 function SearchForm(props) {
+  const sortBtnClassName = `app__button search__btn search__btn_action_sort ${props.isSortByBirthday ? 'search__btn_active' : ''}`;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +17,7 @@ function SearchForm(props) {
             placeholder="Введи имя, тег, почту..."
             minLength="2"
           />
-          <button className="app__button search__btn search__btn_action_sort" type="button" aria-label="Сортировка" title="Сортировка" onClick={props.onSortBnt} />
+          <button className={sortBtnClassName} type="button" aria-label="Сортировка" title="Сортировка" onClick={props.onSortBnt} />
         </div>
         {/* {validityError && <p className="search__error">{validityError}</p>} */}
       </fieldset>

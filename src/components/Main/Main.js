@@ -12,6 +12,7 @@ function Main(props) {
       <Header
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}
+        isSortByBirthday={props.isSortByBirthday}
       />
       <main>
         {
