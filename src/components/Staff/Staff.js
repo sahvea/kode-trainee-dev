@@ -2,31 +2,27 @@
 import React from 'react';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import SkeletonCard from '../SkeletonCard/SkeletonCard';
+// import Divider from '../Divider/Divider';
+import { sortByAlphabet, sortByBirthday } from '../../utils/utils';
 
 function Staff(props) {
-  const staffArrayDefault = props.staffMembers.sort((a, b) => a.firstName.localeCompare(b.firstName));
-  const staffArraySorted = props.staffMembers.sort((a, b) => a.birthday.localeCompare(b.birthday));
-
-  // const [staffArraySorted, setStaffArraySorted] = React.useState([]);
-  // const staffArraySorted = props.staffMembers.sort((a, b) => {
-//     //calculate the difference between first date and current date
-//     const firstDifference = new Date() - new Date(a.birthday);
-//     //calculate difference between second date and current date.
-//     const secondDifference = new Date() - new Date(b.birthday);
-//     a.birthday.localeCompare(b.birthday)
-
-//     //return the smallest value.
-//     return firstDifference - secondDifference;
-//   });
+  const arraySortedByAlphabet = props.staffMembers.sort(sortByAlphabet);
+  const arraySortedByBirthday = props.staffMembers.sort(sortByBirthday);
+  const [staffArraySorted, setStaffArraySorted] = React.useState([]);
 
 
+  React.useEffect(() => {
+    if (props.isSortByBirthday) {
+      setStaffArraySorted(arraySortedByBirthday);
+    }
+    else {
+      setStaffArraySorted(arraySortedByAlphabet);
+    }
 
+    console.log(staffArraySorted);
 
-
-//  React.useEffect(() => {
-
-//   console.log(staffArraySorted);
-//  }, [staffArraySorted]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.isSortByBirthday, props.staffMembers]);
 
   return (
     <section className="staff app__section">
@@ -43,7 +39,7 @@ function Staff(props) {
             ))
         }
       </ul>
-      {/* <Divider year={'2022'} /> */}
+      {/* {isNextYear && <Divider year={'2022'} /> } */}
     </section>
   );
 }

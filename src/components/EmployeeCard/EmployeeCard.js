@@ -18,30 +18,9 @@ function EmployeeCard(props) {
                               .toLocaleString('ru', {day: 'numeric', month: 'short'})
                               .split('.').join('');
 
-  // const dateArray = Array.from(employeeData.birthDate);
-  // const sorterEmployeeData = dateArray.sort((a, b) => b.birthDate - a.birthDate);
-
-
-  // React.useEffect(() => {
-
-  //   function findUpcomingBirthday(dataString) {
-  //     const currentYear = new Date().getFullYear();
-  //     const birthDate = new Date(dataString);
-  //     let year;
-
-  //     const age = currentYear - birthDate.getFullYear();
-  //     const currentBirthday = birthDate.getFullYear() + age;
-
-  //     if (currentBirthday > currentYear) {
-  //       year = currentYear + 1;
-  //     }
-
-  //   }
-
-  //   findUpcomingBirthday(props.employee.birthday);
-
-  //   console.log(findUpcomingBirthday(props.employee.birthday));
-  // }, [props.employee.birthday]);
+  function showData() {
+    console.log(props.employee.birthday);
+  }
 
   return (
     <article className="employee">
@@ -52,7 +31,7 @@ function EmployeeCard(props) {
         <p className="employee__nickname">{employeeNickname}</p>
         <p className="employee__post">{employeeData.post}</p>
       </Link>
-      { employeeBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
+      { employeeBirthDate && <p className="employee__birthdate" onClick={showData}>{employeeBirthDate}</p> }
     </article>
   );
 }
