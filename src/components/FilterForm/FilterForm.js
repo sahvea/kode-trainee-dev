@@ -1,4 +1,13 @@
-function FilterForm() {
+import React from 'react';
+
+function FilterForm(props) {
+  const [isBdayChecked, setIsBdayChecked] = React.useState(false);
+
+  function handleRadioClick() {
+    setIsBdayChecked(!isBdayChecked);
+    props.setChecked(!isBdayChecked);
+  }
+
   return (
     <form className="filter-form" name="filter-form">
       <fieldset className="filter-form__fieldset">
@@ -10,7 +19,8 @@ function FilterForm() {
             name="filter"
             value="alphabet"
             required
-            checked="true"
+            checked={!isBdayChecked}
+            onChange={handleRadioClick}
           />
           <span className="filter-form__visible-radio"></span>
           По алфавиту
@@ -22,6 +32,8 @@ function FilterForm() {
             name="filter"
             value="birthday"
             required
+            checked={isBdayChecked}
+            onChange={handleRadioClick}
           />
           <span className="filter-form__visible-radio"></span>
           По дню рождения

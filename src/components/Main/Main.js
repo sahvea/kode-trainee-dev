@@ -6,14 +6,12 @@ import { errorInfoConfig } from '../../utils/constants';
 
 
 function Main(props) {
-  const [isSortByBirthday, setIsSortByBirthday] = React.useState(true);
 
   return (
     <>
       <Header
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}
-        setIsSortByBirthday={setIsSortByBirthday}
       />
       <main>
         {
@@ -27,7 +25,7 @@ function Main(props) {
           : <Staff
               isLoading={props.isLoading}
               staffMembers={props.staffMembers}
-              isSortByBirthday={isSortByBirthday}
+              isSortByBirthday={props.isSortByBirthday}
             />
         }
       </main>

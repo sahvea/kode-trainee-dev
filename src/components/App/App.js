@@ -13,6 +13,7 @@ function App() {
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
+  const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
   const [staffMembers, setStaffMembers] = React.useState([]);
 
 
@@ -83,6 +84,7 @@ function App() {
               setSearchError={setIsSearchError}
               isCriticalError={isCriticalError}
               isSearchError={isSearchError}
+              isSortByBirthday={isBdaySortChecked}
             />}
         />
 
@@ -91,7 +93,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} />
+      <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} setChecked={setIsBdaySortChecked} />
     </>
   );
 }

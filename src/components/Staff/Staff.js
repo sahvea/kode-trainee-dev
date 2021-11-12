@@ -37,7 +37,7 @@ function Staff(props) {
           ? <SkeletonCardList />
           : props.isSortByBirthday
             ? <>
-                <ul className="staff__list THIS_YEAR">
+                <ul className="staff__list">
                   { staffArrayWithBdThisYear.map(item => (
                       <li className="staff__list-item" key={item.id}>
                         <EmployeeCard
@@ -52,7 +52,7 @@ function Staff(props) {
                   <>
                     <Divider year={nextYear} />
 
-                    <ul className="staff__list NEXT_YEAR">
+                    <ul className="staff__list">
                       { staffArrayWithBdNextYear.map(item => (
                         <li className="staff__list-item" key={item.id}>
                             <EmployeeCard
@@ -66,7 +66,7 @@ function Staff(props) {
                 }
               </>
 
-            : <ul className="staff__list ALPHABET">
+            : <ul className="staff__list">
                 { arraySortedByAlphabet.map(item => (
                   <li className="staff__list-item" key={item.id}>
                     <EmployeeCard
