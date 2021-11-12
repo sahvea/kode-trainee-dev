@@ -41,6 +41,7 @@ function Main(props) {
               isLoading={props.isLoading}
               staffMembers={staffMembers}
               isSortByBirthday={props.isSortByBirthday}
+              onCardClick={props.onCardClick}
             />
         }
       </main>

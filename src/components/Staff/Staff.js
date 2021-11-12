@@ -42,6 +42,7 @@ function Staff(props) {
                         <EmployeeCard
                           employee={item}
                           isBirthDate={true}
+                          onCardClick={props.onCardClick}
                         />
                       </li>
                   )) }
@@ -57,6 +58,7 @@ function Staff(props) {
                           <EmployeeCard
                             employee={item}
                             isBirthDate={true}
+                            onCardClick={props.onCardClick}
                           />
                         </li>
                       )) }
@@ -71,6 +73,7 @@ function Staff(props) {
                     <EmployeeCard
                       employee={item}
                       isBirthDate={false}
+                      onCardClick={props.onCardClick}
                     />
                   </li>
                 )) }

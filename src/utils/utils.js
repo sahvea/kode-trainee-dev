@@ -1,19 +1,30 @@
-const yearInMs = 3.15576e+10;
-
 export function getAge(birthDateString) {
-  Math.floor((new Date() - new Date(birthDateString).getTime()) / yearInMs);
+  const today = new Date();
+  const birthDate = new Date(birthDateString);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const month = today.getMonth() - birthDate.getMonth();
+
+  if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
 }
 
-// function getAge(dateString) {
-//   const today = new Date();
-//   const birthDate = new Date(dateString);
-//   const age = today.getFullYear() - birthDate.getFullYear();
-//   const month = today.getMonth() - birthDate.getMonth();
-//   if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-//       age--;
-//   }
-//   return age;
-// }
+export function getNoun(number, one, two, five) {
+  let n = Math.abs(number);
+  n %= 100;
+  if (n >= 5 && n <= 20) {
+    return five;
+  }
+  n %= 10;
+  if (n === 1) {
+    return one;
+  }
+  if (n >= 2 && n <= 4) {
+    return two;
+  }
+  return five;
+}
 
 export function sortArrayByBirthday(dateStringA, dateStringB) {
   const birthDateA = new Date(dateStringA.birthday);

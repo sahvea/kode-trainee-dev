@@ -18,7 +18,7 @@ function App() {
   const [isSearched, setIsSearched] = React.useState(false);
   const [staffMembers, setStaffMembers] = React.useState([]);
   const [searchedStaffMembers, setSearchedStaffMembers] = React.useState([]);
-
+  const [selectedEmployeeData, setSelectedEmployeeData] = React.useState({});
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -51,6 +51,9 @@ function App() {
     }
   }
 
+  function handleEmployeeCardClick(userData) {
+    setSelectedEmployeeData(userData);
+  }
 
   function openModalWindow() {
     setIsModalWindowOpen(true);
@@ -99,10 +102,11 @@ function App() {
               isCriticalError={isCriticalError}
               isSortByBirthday={isBdaySortChecked}
               onSearch={handleSearch}
+              onCardClick={handleEmployeeCardClick}
             />}
         />
 
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile employeeData={selectedEmployeeData} staffMembers={staffMembers} />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
