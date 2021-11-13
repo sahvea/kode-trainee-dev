@@ -1,12 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
-import { errorInfoConfig } from '../../utils/constants';
 import { filterArrayByDepartament } from '../../utils/utils';
 
 
 function Main(props) {
+  const location = useLocation();
+  const [isLocationChanged, setIsLocationChanged] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState('all');
   const [staffMembers, setStaffMembers] = React.useState([]);
 
@@ -17,6 +19,12 @@ function Main(props) {
       setStaffMembers(props.staffMembers);
     }
   }, [activeTab, props.staffMembers]);
+
+  // скелетная загрузка при возвращении на страницу (вместо ошибки поиска из-за пустого массива)
+  React.useEffect(() => {
+    setIsLocationChanged(true);
+    setTimeout(() => setIsLocationChanged(false), 300);
+  }, [location]);
 
   return (
     <>
@@ -29,16 +37,11 @@ function Main(props) {
         isLoading={props.isLoading}
       />
       <main>
-        {
-          ( props.isCriticalError || props.isSearchError || (!props.isLoading && staffMembers.length <= 0) )
-          ? <ErrorSection
-              criticalError={props.isCriticalError}
-              img={props.isCriticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img}
-              error={props.isCriticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title}
-              info={props.isCriticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle}
-            />
+        {props.isCriticalError || props.isSearchError || (!props.isLoading && !isLocationChanged && staffMembers.length <= 0)
+          ? <ErrorSection criticalError={props.isCriticalError} />
           : <Staff
               isLoading={props.isLoading}
+              isLocationChanged={isLocationChanged}
               staffMembers={staffMembers}
               isSortByBirthday={props.isSortByBirthday}
               onCardClick={props.onCardClick}

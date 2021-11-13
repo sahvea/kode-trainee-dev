@@ -32,7 +32,7 @@ function Staff(props) {
   return (
     <section className="staff app__section">
       {
-        props.isLoading
+        props.isLoading || props.isLocationChanged
           ? <SkeletonCardList />
           : props.isSortByBirthday
             ? <>

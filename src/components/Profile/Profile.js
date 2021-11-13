@@ -4,7 +4,6 @@ import SkeletonProfile from '../Skeleton/SkeletonProfile';
 import Navigation from '../Navigation/Navigation';
 import ErrorSection from '../ErrorSection/ErrorSection';
 import { getAge, getNoun, getPhoneNumber, parseEmployee } from '../../utils/utils';
-import { errorInfoConfig } from '../../utils/constants';
 
 function Profile(props) {
   const location = useLocation();
@@ -41,12 +40,7 @@ function Profile(props) {
     <>
     {props.isCriticalError
       ? <main>
-          <ErrorSection
-            criticalError={props.isCriticalError}
-            img={errorInfoConfig.critical.img}
-            error={errorInfoConfig.critical.title}
-            info={errorInfoConfig.critical.subtitle}
-          />
+          <ErrorSection criticalError={props.isCriticalError} />
         </main>
       : <>
           <header className="header header_position_profile">

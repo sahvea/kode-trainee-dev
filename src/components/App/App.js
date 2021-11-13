@@ -28,9 +28,9 @@ function App() {
       })
       .catch(err => {
         if (err.response) {
-          console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);
+          console.log(err.response.data);
         } else {
           console.log('Error', err.message);
         }
