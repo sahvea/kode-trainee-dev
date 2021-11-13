@@ -27,7 +27,7 @@ function SkeletonProfile() {
             </p>
           </li>
           <li className="profile__contact-list-item">
-            <p className="profile__link app__link profile__personal-data profile__personal-data_type_tel">
+            <p className="profile__personal-data profile__personal-data_type_tel">
               <Skeleton width={160} borderRadius={50} />
             </p>
           </li>

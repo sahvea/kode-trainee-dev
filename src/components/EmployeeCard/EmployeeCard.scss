@@ -2,15 +2,22 @@
   padding: 6px 0 2px;
   height: 80px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: min-content 1fr min-content;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
 
   &_position_profile {
     height: unset;
-    gap: unset;
+  }
+}
+
+.employee__link-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &:active {
+    transform: scale(.98);
   }
 }
 
@@ -23,6 +30,7 @@
 }
 
 .employee__info {
+  margin-left: 16px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;

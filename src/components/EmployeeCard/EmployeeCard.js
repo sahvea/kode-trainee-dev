@@ -14,18 +14,19 @@ function EmployeeCard(props) {
 
   return (
     <article className="employee">
-      <img className="employee__avatar" src={employeeData.avatar} alt={employeeData.name} />
-
       <Link
         to={{
           pathname: `/profile/${props.employee.id}`
         }}
-        className="employee__info app__link"
+        className="app__link employee__link-wrap"
         onClick={handleCardClick}
       >
-        <p className="employee__name">{employeeData.name}</p>
-        <p className="employee__nickname">{employeeData.nickname}</p>
-        <p className="employee__post">{employeeData.post}</p>
+        <img className="employee__avatar" src={employeeData.avatar} alt={employeeData.name} />
+        <div className="employee__info">
+          <p className="employee__name">{employeeData.name}</p>
+          <p className="employee__nickname">{employeeData.nickname}</p>
+          <p className="employee__post">{employeeData.post}</p>
+        </div>
       </Link>
       { props.isBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
     </article>
