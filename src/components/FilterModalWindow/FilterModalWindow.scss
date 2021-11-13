@@ -37,6 +37,7 @@
   font-size: 16px;
   line-height: 1.3;
   color: $color_font_primary;
+  cursor: pointer;
 }
 
 .filter-form__visible-radio {
@@ -50,7 +51,6 @@
   border: 2px solid $color_bright;
   border-radius: 100%;
   transition: $transition_linear;
-  cursor: pointer;
 }
 
 .filter-form__radio {

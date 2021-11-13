@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
-import ModalWindow from '../ModalWindow/ModalWindow';
+import FilterModalWindow from '../FilterModalWindow/FilterModalWindow';
 import { api } from '../../utils/api';
 import { filterArrayByName } from '../../utils/utils';
 
@@ -118,7 +118,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <ModalWindow
+      <FilterModalWindow
         isOpen={isModalWindowOpen}
         onClose={closeModalWindow}
         setChecked={setIsBdaySortChecked}

@@ -1,12 +1,19 @@
-import FilterForm from '../FilterForm/FilterForm';
-
 function ModalWindow(props) {
-  return (
-    <div className={`modal-window ${props.isOpen ? "modal-window_opened" : ""}`}>
-      <div className="modal-window__container">
-        <button className="app__button modal-window__close-btn" type="button" aria-label="Закрыть" title="Закрыть" onClick={props.onClose}></button>
+  const modalWindowClassName = `modal-window ${props.isOpen ? 'modal-window_opened' : ''}`;
+  const modalWindowContainerClassName = `modal-window__container ${props.containerClass ? props.containerClass : ''}`;
 
-        <FilterForm setChecked={props.setChecked} onModalWindowCLose={props.onClose} />
+  return (
+    <div className={modalWindowClassName}>
+      <div className={modalWindowContainerClassName}>
+        <button
+          className="app__button modal-window__close-btn"
+          type="button"
+          aria-label="Закрыть"
+          title="Закрыть"
+          onClick={props.onClose}
+        />
+
+        {props.children}
 
       </div>
     </div>
