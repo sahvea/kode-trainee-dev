@@ -1,0 +1,55 @@
+.app {
+  min-width: $container_min-width;
+  margin: 0 auto;
+  background-color: $color_white;
+  box-sizing: border-box;
+  font-family: $Inter;
+  color: $color_font_primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+.app__section {
+  margin: 0 auto;
+  max-width: $container_max-width;
+  padding: 0 16px;
+}
+
+.app__button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  transition: $transition_ease;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+
+  &:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: .7;
+  }
+}
+
+.app__link {
+  text-decoration: none;
+  transition: $transition_linear;
+
+  &:hover {
+    opacity: .8;
+  }
+}

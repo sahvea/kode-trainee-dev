@@ -1,0 +1,13 @@
+.staff {
+  padding-top: 16px;
+  padding-bottom: 30px;
+}
+
+.staff__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}

@@ -1,0 +1,29 @@
+.divider {
+  position: relative;
+  margin: 4px 0;
+  padding: 24px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(24px + 10px);
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color_grey;
+    z-index: -1;
+  }
+}
+
+.divider__year {
+  display: block;
+  margin: 0 auto;
+  padding: 0 60px;
+  width: min-content;
+  background-color: $color_white;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.3;
+  color: $color_grey;
+  text-align: center;
+}

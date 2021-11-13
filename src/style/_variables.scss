@@ -1,0 +1,28 @@
+  // colors
+
+$color_font_primary: #050510;
+$color_font_secondary: #55555c;
+$color_font_tetriary: #97979b;
+$color_white: #fff;
+$color_grey: #c3c3c6;
+$color_light-grey: #f7f7f8;
+$color_bright: #6534ff;
+$color_error: #f44336;
+
+  // font-family
+
+$Inter: 'Inter', Arial, sans-serif;
+
+  // container width
+
+$container_min-width: 320px;
+$container_max-width: 1280px;
+
+  // transition
+
+$transition_linear: .2s linear;
+$transition_ease: .3s ease-in-out;
+
+  // others
+
+$header_height: 175px;

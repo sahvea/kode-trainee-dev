@@ -1,0 +1,19 @@
+@import './vendor/normalize.scss';
+@import './vendor/fonts/fonts.scss';
+
+@import './style/variables';
+@import './style/breakpoints';
+
+@import './components/App/App.scss';
+@import './components/Header/Header.scss';
+@import './components/SearchForm/SearchForm.scss';
+@import './components/TabBar/TabBar.scss';
+@import './components/Staff/Staff.scss';
+@import './components/EmployeeCard/EmployeeCard.scss';
+@import './components/ModalWindow/ModalWindow.scss';
+@import './components/FilterModalWindow/FilterModalWindow.scss';
+@import './components/ErrorSection/ErrorSection.scss';
+@import './components/Divider/Divider.scss';
+@import './components/NotFound/NotFound.scss';
+@import './components/Navigation/Navigation.scss';
+@import './components/Profile/Profile.scss';

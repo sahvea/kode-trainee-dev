@@ -1,0 +1,83 @@
+.modal-window {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color_font_primary, .16);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+  transition: .3s ease-in-out;
+
+  &_opened {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.modal-window__container {
+  position: relative;
+  width: 100%;
+  max-width: 375px;
+  min-width: 280px;
+  margin: 0 20px;
+  padding: 24px 16px 8px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: $color_white;
+
+  &_type_image {
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+.modal-window__close-btn {
+  position: absolute;
+  top: 24px;
+  right: 23px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: $color_light-grey;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 50%;
+    width: 12px;
+    height: 2px;
+    background-color: $color_grey;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  &_type_image {
+    top: -35px;
+    right: 0;
+    background-color: transparent;
+
+    &::before, &::after {
+      background-color: $color_white;
+      width: 25px;
+      height: 3px;
+    }
+  }
+}
+
+.modal-window__image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
+}
