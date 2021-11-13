@@ -8,7 +8,6 @@ import { api } from '../../utils/api';
 import { filterArrayByName } from '../../utils/utils';
 
 
-
 function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
@@ -106,12 +105,24 @@ function App() {
             />}
         />
 
-        <Route path="/profile/:id" element={<Profile employeeData={selectedEmployeeData} staffMembers={staffMembers} />} />
+        <Route path="/profile/:id"
+          element={
+            <Profile
+              employeeData={selectedEmployeeData}
+              staffMembers={staffMembers}
+              isLoading={isLoading}
+              isCriticalError={isCriticalError}
+            />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <ModalWindow isOpen={isModalWindowOpen} onClose={closeModalWindow} setChecked={setIsBdaySortChecked} />
+      <ModalWindow
+        isOpen={isModalWindowOpen}
+        onClose={closeModalWindow}
+        setChecked={setIsBdaySortChecked}
+      />
     </>
   );
 }

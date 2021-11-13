@@ -1,7 +1,10 @@
 import React from 'react';
 import { useLocation } from 'react-router';
+import SkeletonProfile from '../Skeleton/SkeletonProfile';
 import Navigation from '../Navigation/Navigation';
+import ErrorSection from '../ErrorSection/ErrorSection';
 import { getAge, getNoun, getPhoneNumber, parseEmployee } from '../../utils/utils';
+import { errorInfoConfig } from '../../utils/constants';
 
 function Profile(props) {
   const location = useLocation();
@@ -36,31 +39,46 @@ function Profile(props) {
 
   return (
     <>
-      <header className="header header_position_profile">
-        <Navigation />
-      </header>
+    {props.isCriticalError
+      ? <main>
+          <ErrorSection
+            criticalError={props.isCriticalError}
+            img={errorInfoConfig.critical.img}
+            error={errorInfoConfig.critical.title}
+            info={errorInfoConfig.critical.subtitle}
+          />
+        </main>
+      : <>
+          <header className="header header_position_profile">
+            <Navigation />
+          </header>
 
-      <main className="profile">
-        <section className="profile__card employee employee_position_profile">
-          <img className="profile__avatar employee__avatar" src={employeeData.avatar} alt={employeeData.name} />
-          <div className="profile__info employee__info">
-            <p className="profile__name employee__name">{employeeData.name}</p>
-            <p className="profile__nickname employee__nickname">{employeeData.nickname}</p>
-            <p className="profile__post employee__post">{employeeData.post}</p>
-          </div>
-        </section>
-        <section className="profile__contact-info app__section">
-          <ul className="profile__contact-list">
-            <li className="profile__contact-list-item">
-              <p className="profile__personal-data profile__personal-data_type_birthdate">{employeeBirthDate}</p>
-              <p className="profile__age">{employeeAge}</p>
-            </li>
-            <li className="profile__contact-list-item">
-              <a href={`tel:${phoneNumberUrl}`} className="profile__link app__link profile__personal-data profile__personal-data_type_tel">{employeePhoneNumber}</a>
-            </li>
-          </ul>
-        </section>
-      </main>
+          {props.isLoading
+            ? <SkeletonProfile />
+            : <main className="profile">
+                <section className="profile__card employee employee_position_profile">
+                  <img className="profile__avatar employee__avatar" src={employeeData.avatar} alt={employeeData.name} />
+                  <div className="profile__info employee__info">
+                    <p className="profile__name employee__name">{employeeData.name}</p>
+                    <p className="profile__nickname employee__nickname">{employeeData.nickname}</p>
+                    <p className="profile__post employee__post">{employeeData.post}</p>
+                  </div>
+                </section>
+                <section className="profile__contact-info app__section">
+                  <ul className="profile__contact-list">
+                    <li className="profile__contact-list-item">
+                      <p className="profile__personal-data profile__personal-data_type_birthdate">{employeeBirthDate}</p>
+                      <p className="profile__age">{employeeAge}</p>
+                    </li>
+                    <li className="profile__contact-list-item">
+                      <a href={`tel:${phoneNumberUrl}`} className="profile__link app__link profile__personal-data profile__personal-data_type_tel">{employeePhoneNumber}</a>
+                    </li>
+                  </ul>
+                </section>
+              </main>
+          }
+        </>
+        }
     </>
   );
 }

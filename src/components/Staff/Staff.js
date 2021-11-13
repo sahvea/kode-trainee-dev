@@ -1,6 +1,6 @@
 import React from 'react';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
-import SkeletonCardList from '../SkeletonCardList/SkeletonCardList';
+import SkeletonCardList from '../Skeleton/SkeletonCardList';
 import Divider from '../Divider/Divider';
 import { sortArrayByBirthday } from '../../utils/utils';
 import { nextYear } from '../../utils/constants';
