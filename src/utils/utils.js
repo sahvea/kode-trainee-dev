@@ -1,3 +1,19 @@
+import avatar from '../images/avatar-plug.png';
+
+export function parseEmployee(data) {
+  const newData = {
+    id: data.id,
+    avatar: data.avatarUrl || avatar,
+    name: `${data.firstName} ${data.lastName}`,
+    nickname: `${data.userTag.toLowerCase()}`,
+    post: data.position,
+    birthDate: data.birthday,
+    phone: data.phone
+  };
+
+  return newData;
+}
+
 export function getAge(birthDateString) {
   const today = new Date();
   const birthDate = new Date(birthDateString);
@@ -24,6 +40,12 @@ export function getNoun(number, one, two, five) {
     return two;
   }
   return five;
+}
+
+export function getPhoneNumber(number, setUrl, setFinal) {
+  const numberWithSpaces = number.split('-').join(' ');
+  setUrl('+' + number.split('-').join(''));
+  setFinal('(' + numberWithSpaces.slice(0, 3) + ')' + numberWithSpaces.slice(3, 10) + ' ' + numberWithSpaces.slice(10))
 }
 
 export function sortArrayByBirthday(dateStringA, dateStringB) {

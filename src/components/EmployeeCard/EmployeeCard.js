@@ -1,18 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import avatar from '../../images/avatar-plug.png';
+import { parseEmployee } from '../../utils/utils';
 
 function EmployeeCard(props) {
-  const employeeData = {
-    id: props.employee.id,
-    avatar: props.employee.avatarUrl || avatar,
-    name: `${props.employee.firstName} ${props.employee.lastName}`,
-    nickname: `${props.employee.userTag.toLowerCase()}`,
-    post: props.employee.position,
-    birthDate: props.employee.birthday,
-    phone: props.employee.phone
-  };
-
+  const employeeData = parseEmployee(props.employee);
   const employeeBirthDate = new Date(employeeData.birthDate)
           .toLocaleString('ru', {day: 'numeric', month: 'short'})
           .split('.').join('');

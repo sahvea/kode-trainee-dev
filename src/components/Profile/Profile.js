@@ -1,31 +1,28 @@
 import React from 'react';
 import { useLocation } from 'react-router';
 import Navigation from '../Navigation/Navigation';
-import { getAge, getNoun } from '../../utils/utils';
-import avatar from '../../images/avatar-plug.png';
+import { getAge, getNoun, getPhoneNumber, parseEmployee } from '../../utils/utils';
 
 function Profile(props) {
   const location = useLocation();
   const employeeId = props.employeeData.id;
   const pathnameId = location.pathname.split('/profile/').join('');
   const [employeeData, setEmployeeData] = React.useState({});
+  const [phoneNumberUrl, setPhoneNumberUrl] = React.useState('');
+  const [employeePhoneNumber, setEmployeePhoneNumber] = React.useState('');
 
   React.useEffect(() => {
     if (employeeId) {
       setEmployeeData(props.employeeData);
+      getPhoneNumber(props.employeeData.phone, setPhoneNumberUrl, setEmployeePhoneNumber);
+
+    // находит сотрудника по id из основого массива при переходе по ссылке / перезагрузке страницы
     } else if (!employeeId && props.staffMembers.length > 0) {
-      // находит сотрудника по id из основого массива при переходе по ссылке / перезагрузке страницы
       const employeeArr = props.staffMembers.filter(item => item.id === pathnameId);
       const newEmployeeData = Object.assign({}, employeeArr)[0];
 
-      setEmployeeData({
-        avatar: newEmployeeData.avatarUrl || avatar,
-        name: `${newEmployeeData.firstName} ${newEmployeeData.lastName}`,
-        nickname: `${newEmployeeData.userTag.toLowerCase()}`,
-        post: newEmployeeData.position,
-        birthDate: newEmployeeData.birthday,
-        phone: newEmployeeData.phone
-      })
+      setEmployeeData(parseEmployee(newEmployeeData));
+      getPhoneNumber(newEmployeeData.phone, setPhoneNumberUrl, setEmployeePhoneNumber);
     }
   }, [employeeId, pathnameId, props.employeeData, props.staffMembers]);
 
@@ -36,7 +33,6 @@ function Profile(props) {
           .toLocaleString('ru', {day: 'numeric', month: 'long', year: 'numeric'})
           .split(' г.').join('');
 
-  const employeePhoneNumber = employeeData.phone;
 
   return (
     <>
@@ -60,7 +56,7 @@ function Profile(props) {
               <p className="profile__age">{employeeAge}</p>
             </li>
             <li className="profile__contact-list-item">
-              <a href={`tel:${employeePhoneNumber}`} className="profile__link app__link profile__personal-data profile__personal-data_type_tel">{employeeData.phone}</a>
+              <a href={`tel:${phoneNumberUrl}`} className="profile__link app__link profile__personal-data profile__personal-data_type_tel">{employeePhoneNumber}</a>
             </li>
           </ul>
         </section>
