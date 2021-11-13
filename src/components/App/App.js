@@ -10,7 +10,8 @@ import { filterArrayByName } from '../../utils/utils';
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isModalWindowOpen, setIsModalWindowOpen] = React.useState(false);
+  const [isFilterModalWindowOpen, setIsFilterModalWindowOpen] = React.useState(false);
+  const [isImageModalWindowOpen, setIsImageModalWindowOpen] = React.useState(false);
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
   const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
@@ -54,19 +55,24 @@ function App() {
     setSelectedEmployeeData(userData);
   }
 
-  function openModalWindow() {
-    setIsModalWindowOpen(true);
+  function openFilterModalWindow() {
+    setIsFilterModalWindowOpen(true);
   }
 
-  function closeModalWindow() {
-    setIsModalWindowOpen(false);
+  function openImageModalWindow() {
+    setIsImageModalWindowOpen(true);
+  }
+
+  function closeModalWindows() {
+    setIsFilterModalWindowOpen(false);
+    setIsImageModalWindowOpen(false);
   }
 
   // закрытие модального окна по Esc
   React.useEffect(() => {
     function handleEscClose(evt) {
       if (evt.key === 'Escape') {
-        closeModalWindow();
+        closeModalWindows();
       }
     }
     document.addEventListener('keydown', handleEscClose);
@@ -78,7 +84,7 @@ function App() {
   React.useEffect(() => {
     function handleOverlayClose(evt) {
       if (evt.target.classList.contains('modal-window_opened')) {
-        closeModalWindow();
+        closeModalWindows();
       }
     }
     document.addEventListener('click', handleOverlayClose);
@@ -95,7 +101,7 @@ function App() {
             <Main
               isLoading={isLoading}
               staffMembers={isSearched ? searchedStaffMembers : staffMembers}
-              openModalWindow={openModalWindow}
+              openModalWindow={openFilterModalWindow}
               setSearchError={setIsSearchError}
               isSearchError={isSearchError}
               isCriticalError={isCriticalError}
@@ -112,6 +118,9 @@ function App() {
               staffMembers={staffMembers}
               isLoading={isLoading}
               isCriticalError={isCriticalError}
+              isModalWindowOpen={isImageModalWindowOpen}
+              openModalWindow={openImageModalWindow}
+              closeModalWindow={closeModalWindows}
             />}
         />
 
@@ -119,8 +128,8 @@ function App() {
       </Routes>
 
       <FilterModalWindow
-        isOpen={isModalWindowOpen}
-        onClose={closeModalWindow}
+        isOpen={isFilterModalWindowOpen}
+        onClose={closeModalWindows}
         setChecked={setIsBdaySortChecked}
       />
     </>

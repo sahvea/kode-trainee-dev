@@ -8,6 +8,14 @@
 .profile__avatar {
   width: 104px;
   height: 104px;
+  cursor: pointer;
+  transition: $transition_linear;
+
+  &:hover {
+    transform: scale(1.03);
+    opacity: .9;
+  }
+
 }
 
 .profile__info {

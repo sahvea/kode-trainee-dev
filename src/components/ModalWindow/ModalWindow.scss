@@ -29,6 +29,11 @@
   box-sizing: border-box;
   border-radius: 20px;
   background-color: $color_white;
+
+  &_type_image {
+    padding: 0;
+    background-color: transparent;
+  }
 }
 
 .modal-window__close-btn {
@@ -38,9 +43,41 @@
   width: 24px;
   height: 24px;
   border-radius: 12px;
-  background-image: url('../../images/icons/delete.svg');
-  background-size: 10px;
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: $color_light-grey;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 50%;
+    width: 12px;
+    height: 2px;
+    background-color: $color_grey;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  &_type_image {
+    top: -35px;
+    right: 0;
+    background-color: transparent;
+
+    &::before, &::after {
+      background-color: $color_white;
+      width: 25px;
+      height: 3px;
+    }
+  }
+}
+
+.modal-window__image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
 }
