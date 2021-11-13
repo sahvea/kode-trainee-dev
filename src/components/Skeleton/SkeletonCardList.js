@@ -16,6 +16,7 @@ function SkeletonCardList() {
                   <p className="employee__name">
                     <Skeleton width={144} borderRadius={50} />
                   </p>
+                  <p className="employee__nickname"></p>
                   <p className="employee__post">
                     <Skeleton width={80} borderRadius={50} />
                   </p>

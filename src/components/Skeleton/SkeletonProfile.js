@@ -11,6 +11,7 @@ function SkeletonProfile() {
           <p className="profile__name employee__name">
             <Skeleton width={230} borderRadius={50} />
           </p>
+          <p className="employee__nickname"></p>
           <p className="profile__post employee__post">
             <Skeleton width={120} borderRadius={50} />
           </p>
