@@ -5,6 +5,14 @@
     padding-top: 12px;
     background-color: $color_light-grey;
   }
+
+  &_error {
+    background: linear-gradient(180deg, $color_error 71%, transparent 39%);
+  }
+
+  &_loading {
+    background: linear-gradient(180deg, $color_bright 71%, transparent 39%);
+  }
 }
 
 .header__title {
@@ -13,4 +21,18 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
+  color: $color_font_primary;
+
+  &_response {
+    color: $color_white;
+  }
+}
+
+.header__info-message {
+  margin: 0;
+  padding: 8px 8px 30px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  color: $color_white;
 }

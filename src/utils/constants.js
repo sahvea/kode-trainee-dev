@@ -20,6 +20,8 @@ export const errorInfoConfig = {
 
 export const infoMessages = {
   searchInputEmpty: 'Необходимо ввести ключевое слово.',
+  offline: 'Не могу обновить данные. Проверь соединение с интернетом.',
+  gettingData: 'Секундочку, гружусь...',
 }
 
 export const tabArray = [

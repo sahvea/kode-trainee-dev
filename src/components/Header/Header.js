@@ -1,20 +1,26 @@
 import SearchForm from '../SearchForm/SearchForm';
 import TabBar from '../TabBar/TabBar';
-import { tabArray } from '../../utils/constants';
+import { infoMessages, tabArray } from '../../utils/constants';
 
 function Header(props) {
-  return (
-    <header className="header app__section">
-      <h1 className="header__title">Поиск</h1>
+  const headerClassName = `header app__section ${!props.isOnline ? 'header_error' : props.isLoading ? 'header_loading' : ''}`;
+  const headerTitleClassName = `header__title ${!props.isOnline || props.isLoading ? 'header__title_response' : ''}`;
 
-      <SearchForm
-        className={'header__search'}
-        onSearch={props.onSearch}
-        onSortBnt={props.onSortBnt}
-        setSearchError={props.setSearchError}
-        isSortByBirthday={props.isSortByBirthday}
-        isLoading={props.isLoading}
-      />
+  return (
+    <header className={headerClassName}>
+      <h1 className={headerTitleClassName}>Поиск</h1>
+
+      {!props.isOnline || props.isLoading
+        ? <p className="header__info-message">{!props.isOnline ? infoMessages.offline : props.isLoading && infoMessages.gettingData}</p>
+        : <SearchForm
+            className={'header__search'}
+            onSearch={props.onSearch}
+            onSortBnt={props.onSortBnt}
+            setSearchError={props.setSearchError}
+            isSortByBirthday={props.isSortByBirthday}
+            isLoading={props.isLoading}
+          />
+      }
 
       <TabBar array={tabArray} setActiveTab={props.setActiveTab} />
     </header>

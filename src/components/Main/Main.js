@@ -29,6 +29,7 @@ function Main(props) {
   return (
     <>
       <Header
+        isOnline={props.isOnline}
         onSearch={props.onSearch}
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}

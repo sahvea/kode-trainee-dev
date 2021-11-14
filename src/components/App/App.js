@@ -19,26 +19,43 @@ function App() {
   const [staffMembers, setStaffMembers] = React.useState([]);
   const [searchedStaffMembers, setSearchedStaffMembers] = React.useState([]);
   const [selectedEmployeeData, setSelectedEmployeeData] = React.useState({});
+  const [isOnline, setIsOnline] = React.useState(window.navigator.onLine);
+
+  const updateNetwork = () => {
+    setIsOnline(window.navigator.onLine);
+  };
 
   React.useEffect(() => {
-    setIsLoading(true);
+    window.addEventListener('offline', updateNetwork);
+    window.addEventListener('online', updateNetwork);
 
-    api.get('/users')
-      .then(res => {
-        setStaffMembers(res.data.items);
-      })
-      .catch(err => {
-        if (err.response) {
-          console.log(err.response.status);
-          console.log(err.response.headers);
-          console.log(err.response.data);
-        } else {
-          console.log('Error', err.message);
-        }
-        setIsCriticalError(true);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
+    return () => {
+      window.removeEventListener('offline', updateNetwork);
+      window.removeEventListener('online', updateNetwork);
+    };
+  });
+
+  React.useEffect(() => {
+    if (isOnline) {
+      setIsLoading(true);
+
+      api.get('/users')
+        .then(res => {
+          setStaffMembers(res.data.items);
+        })
+        .catch(err => {
+          if (err.response) {
+            console.log(err.response.status);
+            console.log(err.response.headers);
+            console.log(err.response.data);
+          } else {
+            console.log('Error', err.message);
+          }
+          setIsCriticalError(true);
+        })
+        .finally(() => setIsLoading(false));
+    }
+  }, [isOnline]);
 
   function handleSearch(keyword) {
     const filteredStaffMembers = filterArrayByName(staffMembers, keyword);
@@ -99,6 +116,7 @@ function App() {
         <Route path="/"
           element={
             <Main
+              isOnline={isOnline}
               isLoading={isLoading}
               staffMembers={isSearched ? searchedStaffMembers : staffMembers}
               openModalWindow={openFilterModalWindow}
