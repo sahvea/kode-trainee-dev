@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
+import FilterModalWindow from '../FilterModalWindow/FilterModalWindow';
 import { filterArrayByDepartament } from '../../utils/utils';
 
 
@@ -11,6 +12,7 @@ function Main(props) {
   const [isLocationChanged, setIsLocationChanged] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState('all');
   const [staffMembers, setStaffMembers] = React.useState([]);
+  const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
 
   React.useEffect(() => {
     if (activeTab !== 'all') {
@@ -33,7 +35,7 @@ function Main(props) {
         onSearch={props.onSearch}
         onSortBnt={props.openModalWindow}
         setSearchError={props.setSearchError}
-        isSortByBirthday={props.isSortByBirthday}
+        isSortByBirthday={isBdaySortChecked}
         setActiveTab={setActiveTab}
         isLoading={props.isLoading}
       />
@@ -44,11 +46,17 @@ function Main(props) {
               isLoading={props.isLoading}
               isLocationChanged={isLocationChanged}
               staffMembers={staffMembers}
-              isSortByBirthday={props.isSortByBirthday}
+              isSortByBirthday={isBdaySortChecked}
               onCardClick={props.onCardClick}
             />
         }
       </main>
+
+      <FilterModalWindow
+        isOpen={props.isModalWindowOpen}
+        onClose={props.closeModalWindow}
+        setChecked={setIsBdaySortChecked}
+      />
     </>
   );
 }

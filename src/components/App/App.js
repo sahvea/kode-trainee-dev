@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
-import FilterModalWindow from '../FilterModalWindow/FilterModalWindow';
 import { api } from '../../utils/api';
 import { filterArrayByName } from '../../utils/utils';
 
@@ -14,18 +13,17 @@ function App() {
   const [isImageModalWindowOpen, setIsImageModalWindowOpen] = React.useState(false);
   const [isCriticalError, setIsCriticalError] = React.useState(false);
   const [isSearchError, setIsSearchError] = React.useState(false);
-  const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
   const [isSearched, setIsSearched] = React.useState(false);
   const [staffMembers, setStaffMembers] = React.useState([]);
   const [searchedStaffMembers, setSearchedStaffMembers] = React.useState([]);
   const [selectedEmployeeData, setSelectedEmployeeData] = React.useState({});
   const [isOnline, setIsOnline] = React.useState(window.navigator.onLine);
 
-  const updateNetwork = () => {
-    setIsOnline(window.navigator.onLine);
-  };
-
   React.useEffect(() => {
+    const updateNetwork = () => {
+      setIsOnline(window.navigator.onLine);
+    };
+
     window.addEventListener('offline', updateNetwork);
     window.addEventListener('online', updateNetwork);
 
@@ -111,46 +109,39 @@ function App() {
 
 
   return (
-    <>
-      <Routes>
-        <Route path="/"
-          element={
-            <Main
-              isOnline={isOnline}
-              isLoading={isLoading}
-              staffMembers={isSearched ? searchedStaffMembers : staffMembers}
-              openModalWindow={openFilterModalWindow}
-              setSearchError={setIsSearchError}
-              isSearchError={isSearchError}
-              isCriticalError={isCriticalError}
-              isSortByBirthday={isBdaySortChecked}
-              onSearch={handleSearch}
-              onCardClick={handleEmployeeCardClick}
-            />}
-        />
-
-        <Route path="/profile/:id"
-          element={
-            <Profile
-              employeeData={selectedEmployeeData}
-              staffMembers={staffMembers}
-              isLoading={isLoading}
-              isCriticalError={isCriticalError}
-              isModalWindowOpen={isImageModalWindowOpen}
-              openModalWindow={openImageModalWindow}
-              closeModalWindow={closeModalWindows}
-            />}
-        />
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
-      <FilterModalWindow
-        isOpen={isFilterModalWindowOpen}
-        onClose={closeModalWindows}
-        setChecked={setIsBdaySortChecked}
+    <Routes>
+      <Route path="/"
+        element={
+          <Main
+            isOnline={isOnline}
+            isLoading={isLoading}
+            staffMembers={isSearched ? searchedStaffMembers : staffMembers}
+            setSearchError={setIsSearchError}
+            isSearchError={isSearchError}
+            isCriticalError={isCriticalError}
+            onSearch={handleSearch}
+            onCardClick={handleEmployeeCardClick}
+            openModalWindow={openFilterModalWindow}
+            isModalWindowOpen={isFilterModalWindowOpen}
+            closeModalWindow={closeModalWindows}
+          />}
       />
-    </>
+
+      <Route path="/profile/:id"
+        element={
+          <Profile
+            employeeData={selectedEmployeeData}
+            staffMembers={staffMembers}
+            isLoading={isLoading}
+            isCriticalError={isCriticalError}
+            isModalWindowOpen={isImageModalWindowOpen}
+            openModalWindow={openImageModalWindow}
+            closeModalWindow={closeModalWindows}
+          />}
+      />
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
