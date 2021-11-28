@@ -4,7 +4,7 @@
 Тестовое задание для [KODE](https://kode.ru/) в виде небольшого приложения, в котором есть всего по чуть-чуть: верстки, работы с API, преобразования данных и т.д.
 
 ## Ссылки
-* `Gh-pages (будет после смены настроек приватности)`
+* [Gh-pages](https://sahvea.github.io/kode-trainee-dev)
 * [Задание и требования](https://github.com/appKODE/trainee-test-frontend)
 * [Макет](https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-%D0%9E%D1%81%D0%B5%D0%BD%D1%8C'21?node-id=11%3A14414)
 * [Спецификация метода API](https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users)

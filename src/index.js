@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
+    <BrowserRouter basename="/kode-trainee-dev">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
