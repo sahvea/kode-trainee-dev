@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import errorImg from '../../images/flying-saucer.png';
 
-function NotFound() {
+const NotFound: React.FC = () => {
   return (
     <main>
       <section className="not-found app__section">

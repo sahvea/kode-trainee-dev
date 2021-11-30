@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { ChangeEvent, SyntheticEvent } from 'react';
 import { infoMessages } from '../../utils/constants';
 
-function SearchForm(props) {
+type Props = {
+  isLoading: boolean,
+  isSortByBirthday: boolean,
+  onSortBnt: () => void,
+  onSearch: (input: string) => void,
+  setSearchError: (arg0: boolean) => void,
+}
+
+const SearchForm: React.FC<Props> = ({ isLoading, isSortByBirthday, onSortBnt, onSearch, setSearchError }) => {
   const [input, setInput] = React.useState('');
   const [validityError, setValidityError] = React.useState('');
-  const sortBtnClassName = `app__button search__btn search__btn_action_sort ${props.isSortByBirthday ? 'search__btn_active' : ''}`;
+  const sortBtnClassName = `app__button search__btn search__btn_action_sort ${isSortByBirthday ? 'search__btn_active' : ''}`;
 
-  function handleInputChange(e) {
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const input = e.target;
     const { value } = input;
     setInput(value);
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
 
-    props.onSearch(input);
+    onSearch(input);
 
     if (/^\s+$/.test(input)) {
-      props.setSearchError(true);
+      setSearchError(true);
       setValidityError(infoMessages.searchInputEmpty);
     } else {
-      props.setSearchError(false);
+      setSearchError(false);
       setValidityError('');
     }
   }
 
   return (
     <form className="search" name="search-form" onSubmit={handleSubmit} noValidate>
-      <fieldset className="search__fieldset" disabled={props.isLoading}>
+      <fieldset className="search__fieldset" disabled={isLoading}>
         <div className="search__input-wrap">
           <button className="app__button search__btn search__btn_action_submit" type="submit" aria-label="Поиск" title="Поиск" />
           <input type="search" name="search" required
@@ -38,7 +46,7 @@ function SearchForm(props) {
             onChange={handleInputChange}
             value={input}
           />
-          <button className={sortBtnClassName} type="button" aria-label="Сортировка" title="Сортировка" onClick={props.onSortBnt} />
+          <button className={sortBtnClassName} type="button" aria-label="Сортировка" title="Сортировка" onClick={onSortBnt} />
         </div>
         { validityError && <p className="search__error">{validityError}</p> }
       </fieldset>

@@ -1,7 +1,8 @@
+import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-function SkeletonProfile() {
+const SkeletonProfile: React.FC = () => {
   return (
     <main className="profile">
       <section className="profile__card employee employee_position_profile">

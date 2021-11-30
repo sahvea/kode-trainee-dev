@@ -5,22 +5,48 @@ import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
 import FilterModalWindow from '../FilterModalWindow/FilterModalWindow';
 import { filterArrayByDepartament } from '../../utils/utils';
+import { EmployeeData } from '../../utils/types';
 
+type Props = {
+  staffMembers: EmployeeData[] | any,
+  isOnline: boolean,
+  isLoading: boolean,
+  isSearchError: boolean,
+  isCriticalError: boolean,
+  isModalWindowOpen: boolean,
+  setSearchError: () => void,
+  onSearch: () => void,
+  onCardClick: () => void,
+  openModalWindow: () => void,
+  closeModalWindow: () => void,
+}
 
-function Main(props) {
+const Main: React.FC<Props> = ({
+  staffMembers,
+  isOnline,
+  isLoading,
+  isSearchError,
+  isCriticalError,
+  isModalWindowOpen,
+  setSearchError,
+  onSearch,
+  onCardClick,
+  openModalWindow,
+  closeModalWindow,
+}) => {
   const location = useLocation();
   const [isLocationChanged, setIsLocationChanged] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState('all');
-  const [staffMembers, setStaffMembers] = React.useState([]);
+  const [staffMembersNewArray, setStaffMembersNewArray] = React.useState([]);
   const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
 
   React.useEffect(() => {
     if (activeTab !== 'all') {
-      setStaffMembers(filterArrayByDepartament(props.staffMembers, activeTab));
+      setStaffMembersNewArray(filterArrayByDepartament(staffMembers, activeTab));
     } else {
-      setStaffMembers(props.staffMembers);
+      setStaffMembersNewArray(staffMembers);
     }
-  }, [activeTab, props.staffMembers]);
+  }, [activeTab, staffMembers]);
 
   // скелетная загрузка при возвращении на страницу (вместо ошибки поиска из-за пустого массива)
   React.useEffect(() => {
@@ -31,30 +57,30 @@ function Main(props) {
   return (
     <>
       <Header
-        isOnline={props.isOnline}
-        onSearch={props.onSearch}
-        onSortBnt={props.openModalWindow}
-        setSearchError={props.setSearchError}
+        isOnline={isOnline}
+        onSearch={onSearch}
+        onSortBnt={openModalWindow}
+        setSearchError={setSearchError}
         isSortByBirthday={isBdaySortChecked}
         setActiveTab={setActiveTab}
-        isLoading={props.isLoading}
+        isLoading={isLoading}
       />
       <main>
-        {props.isCriticalError || props.isSearchError || (!props.isLoading && !isLocationChanged && staffMembers.length <= 0)
-          ? <ErrorSection criticalError={props.isCriticalError} />
+        {isCriticalError || isSearchError || (!isLoading && !isLocationChanged && staffMembersNewArray.length <= 0)
+          ? <ErrorSection criticalError={isCriticalError} />
           : <Staff
-              isLoading={props.isLoading}
+              isLoading={isLoading}
               isLocationChanged={isLocationChanged}
-              staffMembers={staffMembers}
+              staffMembers={staffMembersNewArray}
               isSortByBirthday={isBdaySortChecked}
-              onCardClick={props.onCardClick}
+              onCardClick={onCardClick}
             />
         }
       </main>
 
       <FilterModalWindow
-        isOpen={props.isModalWindowOpen}
-        onClose={props.closeModalWindow}
+        isOpen={isModalWindowOpen}
+        onClose={closeModalWindow}
         setChecked={setIsBdaySortChecked}
       />
     </>

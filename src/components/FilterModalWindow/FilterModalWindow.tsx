@@ -1,18 +1,24 @@
 import React from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 
-function FilterModalWindow(props) {
+type Props = {
+  isOpen: boolean,
+  onClose: () => void,
+  setChecked: (arg0: boolean) => void,
+}
+
+const FilterModalWindow: React.FC<Props> = ({ isOpen, onClose, setChecked }) => {
   const [isBdayChecked, setIsBdayChecked] = React.useState(false);
 
   function handleRadioClick() {
     setIsBdayChecked(!isBdayChecked);
-    props.setChecked(!isBdayChecked);
+    setChecked(!isBdayChecked);
 
-    props.onClose();
+    onClose();
   }
 
   return (
-    <ModalWindow isOpen={props.isOpen} onClose={props.onClose} >
+    <ModalWindow isOpen={isOpen} onClose={onClose} >
       <form className="filter-form" name="filter-form">
         <fieldset className="filter-form__fieldset">
           <legend className="filter-form__title">Сортировка</legend>

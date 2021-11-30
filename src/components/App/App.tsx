@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { KeyboardEvent, MouseEvent } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import { api } from '../../utils/api';
 import { filterArrayByName } from '../../utils/utils';
+import { EmployeeData } from '../../utils/types';
 
 
-function App() {
+const App: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFilterModalWindowOpen, setIsFilterModalWindowOpen] = React.useState(false);
   const [isImageModalWindowOpen, setIsImageModalWindowOpen] = React.useState(false);
@@ -38,10 +39,10 @@ function App() {
       setIsLoading(true);
 
       api.get('/users')
-        .then(res => {
+        .then((res: any) => {
           setStaffMembers(res.data.items);
         })
-        .catch(err => {
+        .catch((err: any) => {
           if (err.response) {
             console.log(err.response.status);
             console.log(err.response.headers);
@@ -55,7 +56,7 @@ function App() {
     }
   }, [isOnline]);
 
-  function handleSearch(keyword) {
+  function handleSearch(keyword: string) {
     const filteredStaffMembers = filterArrayByName(staffMembers, keyword);
     setSearchedStaffMembers(filteredStaffMembers);
 
@@ -66,7 +67,7 @@ function App() {
     }
   }
 
-  function handleEmployeeCardClick(userData) {
+  function handleEmployeeCardClick(userData: EmployeeData[]) {
     setSelectedEmployeeData(userData);
   }
 
@@ -85,26 +86,26 @@ function App() {
 
   // закрытие модального окна по Esc
   React.useEffect(() => {
-    function handleEscClose(evt) {
+    const handleEscClose = (evt: KeyboardEvent<HTMLInputElement>) => {
       if (evt.key === 'Escape') {
         closeModalWindows();
       }
     }
-    document.addEventListener('keydown', handleEscClose);
+    document.addEventListener('keydown', () => handleEscClose);
 
-    return () => document.removeEventListener('keydown', handleEscClose);
+    return () => document.removeEventListener('keydown', () => handleEscClose);
   }, []);
 
   // закрытие модального окна по клику вне окна
   React.useEffect(() => {
-    function handleOverlayClose(evt) {
-      if (evt.target.classList.contains('modal-window_opened')) {
+    const handleOverlayClose = (evt: MouseEvent<HTMLElement>) => {
+      if ((evt.target as any).classList.contains('modal-window_opened')) {
         closeModalWindows();
       }
     }
-    document.addEventListener('click', handleOverlayClose);
+    document.addEventListener('click', () => handleOverlayClose);
 
-    return () => document.removeEventListener('click', handleOverlayClose);
+    return () => document.removeEventListener('click', () => handleOverlayClose);
   }, []);
 
 
