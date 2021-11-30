@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "https://sahvea.github.io/kode-trainee-dev/static/css/main.82482981.chunk.css",
-    "main.js": "https://sahvea.github.io/kode-trainee-dev/static/js/main.f7007e76.chunk.js",
-    "main.js.map": "https://sahvea.github.io/kode-trainee-dev/static/js/main.f7007e76.chunk.js.map",
-    "runtime-main.js": "https://sahvea.github.io/kode-trainee-dev/static/js/runtime-main.f15d6520.js",
-    "runtime-main.js.map": "https://sahvea.github.io/kode-trainee-dev/static/js/runtime-main.f15d6520.js.map",
-    "static/css/2.943527f3.chunk.css": "https://sahvea.github.io/kode-trainee-dev/static/css/2.943527f3.chunk.css",
-    "static/js/2.dc795967.chunk.js": "https://sahvea.github.io/kode-trainee-dev/static/js/2.dc795967.chunk.js",
-    "static/js/2.dc795967.chunk.js.map": "https://sahvea.github.io/kode-trainee-dev/static/js/2.dc795967.chunk.js.map",
-    "static/js/3.f46544c1.chunk.js": "https://sahvea.github.io/kode-trainee-dev/static/js/3.f46544c1.chunk.js",
-    "static/js/3.f46544c1.chunk.js.map": "https://sahvea.github.io/kode-trainee-dev/static/js/3.f46544c1.chunk.js.map",
-    "index.html": "https://sahvea.github.io/kode-trainee-dev/index.html",
-    "static/css/2.943527f3.chunk.css.map": "https://sahvea.github.io/kode-trainee-dev/static/css/2.943527f3.chunk.css.map",
-    "static/css/main.82482981.chunk.css.map": "https://sahvea.github.io/kode-trainee-dev/static/css/main.82482981.chunk.css.map",
-    "static/js/2.dc795967.chunk.js.LICENSE.txt": "https://sahvea.github.io/kode-trainee-dev/static/js/2.dc795967.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "https://sahvea.github.io/kode-trainee-dev/static/media/star.682e2b28.svg"
+    "main.css": "/kode-trainee-dev/static/css/main.8bc81430.chunk.css",
+    "main.js": "/kode-trainee-dev/static/js/main.29da24db.chunk.js",
+    "main.js.map": "/kode-trainee-dev/static/js/main.29da24db.chunk.js.map",
+    "runtime-main.js": "/kode-trainee-dev/static/js/runtime-main.bdfc77ac.js",
+    "runtime-main.js.map": "/kode-trainee-dev/static/js/runtime-main.bdfc77ac.js.map",
+    "static/css/2.943527f3.chunk.css": "/kode-trainee-dev/static/css/2.943527f3.chunk.css",
+    "static/js/2.dc795967.chunk.js": "/kode-trainee-dev/static/js/2.dc795967.chunk.js",
+    "static/js/2.dc795967.chunk.js.map": "/kode-trainee-dev/static/js/2.dc795967.chunk.js.map",
+    "static/js/3.f46544c1.chunk.js": "/kode-trainee-dev/static/js/3.f46544c1.chunk.js",
+    "static/js/3.f46544c1.chunk.js.map": "/kode-trainee-dev/static/js/3.f46544c1.chunk.js.map",
+    "index.html": "/kode-trainee-dev/index.html",
+    "static/css/2.943527f3.chunk.css.map": "/kode-trainee-dev/static/css/2.943527f3.chunk.css.map",
+    "static/css/main.8bc81430.chunk.css.map": "/kode-trainee-dev/static/css/main.8bc81430.chunk.css.map",
+    "static/js/2.dc795967.chunk.js.LICENSE.txt": "/kode-trainee-dev/static/js/2.dc795967.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/kode-trainee-dev/static/media/star.682e2b28.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f15d6520.js",
+    "static/js/runtime-main.bdfc77ac.js",
     "static/css/2.943527f3.chunk.css",
     "static/js/2.dc795967.chunk.js",
-    "static/css/main.82482981.chunk.css",
-    "static/js/main.f7007e76.chunk.js"
+    "static/css/main.8bc81430.chunk.css",
+    "static/js/main.29da24db.chunk.js"
   ]
 }
