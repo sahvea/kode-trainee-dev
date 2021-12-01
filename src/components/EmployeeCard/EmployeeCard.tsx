@@ -1,22 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { parseEmployee } from '../../utils/utils';
+import { EmployeeData, ParsedEmployeeData } from '../../utils/types';
 
-function EmployeeCard(props) {
-  const employeeData = parseEmployee(props.employee);
-  const employeeBirthDate = new Date(employeeData.birthDate)
+type Props = {
+  employee: EmployeeData;
+  isBirthDate: boolean;
+  onCardClick: (arg: ParsedEmployeeData) => void;
+}
+
+const EmployeeCard: React.FC<Props> = ({ employee, isBirthDate, onCardClick }) => {
+  const employeeData: ParsedEmployeeData = parseEmployee(employee);
+  const employeeBirthDate: string = new Date(employeeData.birthDate)
           .toLocaleString('ru', {day: 'numeric', month: 'short'})
           .split('.').join('');
 
   function handleCardClick() {
-    props.onCardClick(employeeData);
+    onCardClick(employeeData);
   }
 
   return (
     <article className="employee">
       <Link
         to={{
-          pathname: `/profile/${props.employee.id}`
+          pathname: `/profile/${employee.id}`
         }}
         className="app__link employee__link-wrap"
         onClick={handleCardClick}
@@ -28,7 +35,7 @@ function EmployeeCard(props) {
           <p className="employee__post">{employeeData.post}</p>
         </div>
       </Link>
-      { props.isBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
+      { isBirthDate && <p className="employee__birthdate">{employeeBirthDate}</p> }
     </article>
   );
 }

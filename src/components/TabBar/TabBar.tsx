@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import TabBarItem from '../TabBarItem/TabBarItem';
+import { TabArray } from '../../utils/types';
 
+type Props = {
+  array: TabArray[];
+  setActiveTab: Dispatch<string>;
+}
 
-function TabBar(props) {
-  const [selectedTab, setSelectedTab] = React.useState(0);
+const TabBar: React.FC<Props> = ({ array, setActiveTab }) => {
+  const [selectedTab, setSelectedTab] = React.useState<number>(0);
 
-  function handleTabClick(id, tag) {
+  function handleTabClick(id: number, tag: string) {
     setSelectedTab(id);
-    props.setActiveTab(tag);
+    setActiveTab(tag);
   }
 
   return (
     <div className="tab-bar">
       <ul className="tab-bar__list">
         {
-          props.array.map(item => (
+          array.map(item => (
             <TabBarItem
               key={item.id}
               id={item.id}

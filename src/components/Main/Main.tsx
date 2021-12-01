@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Staff from '../Staff/Staff';
 import ErrorSection from '../ErrorSection/ErrorSection';
 import FilterModalWindow from '../FilterModalWindow/FilterModalWindow';
 import { filterArrayByDepartament } from '../../utils/utils';
-import { EmployeeData } from '../../utils/types';
+import { EmployeeData, ParsedEmployeeData } from '../../utils/types';
 
 type Props = {
-  staffMembers: EmployeeData[] | any,
-  isOnline: boolean,
-  isLoading: boolean,
-  isSearchError: boolean,
-  isCriticalError: boolean,
-  isModalWindowOpen: boolean,
-  setSearchError: () => void,
-  onSearch: () => void,
-  onCardClick: () => void,
-  openModalWindow: () => void,
-  closeModalWindow: () => void,
+  staffMembers: EmployeeData[];
+  isOnline: boolean;
+  isLoading: boolean;
+  isSearchError: boolean;
+  isCriticalError: boolean;
+  isModalWindowOpen: boolean;
+  setSearchError: Dispatch<boolean>;
+  onSearch: (arg: string) => void;
+  onCardClick: (arg: ParsedEmployeeData) => void;
+  openModalWindow: () => void;
+  closeModalWindow: () => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -35,10 +35,10 @@ const Main: React.FC<Props> = ({
   closeModalWindow,
 }) => {
   const location = useLocation();
-  const [isLocationChanged, setIsLocationChanged] = React.useState(false);
-  const [activeTab, setActiveTab] = React.useState('all');
-  const [staffMembersNewArray, setStaffMembersNewArray] = React.useState([]);
-  const [isBdaySortChecked, setIsBdaySortChecked] = React.useState(false);
+  const [isLocationChanged, setIsLocationChanged] = React.useState<boolean>(false);
+  const [activeTab, setActiveTab] = React.useState<string>('all');
+  const [staffMembersNewArray, setStaffMembersNewArray] = React.useState<EmployeeData[]>([]);
+  const [isBdaySortChecked, setIsBdaySortChecked] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (activeTab !== 'all') {

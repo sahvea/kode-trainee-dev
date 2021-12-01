@@ -2,13 +2,13 @@ import React from 'react';
 import { errorInfoConfig } from '../../utils/constants';
 
 type Props = {
-  criticalError: boolean,
+  criticalError: boolean;
 }
 
 const ErrorSection: React.FC<Props> = ({ criticalError }) => {
-  const errorImg = criticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img;
-  const errorTitle = criticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title;
-  const errorSubtitle = criticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle;
+  const errorImg: string = criticalError ? errorInfoConfig.critical.img : errorInfoConfig.search.img;
+  const errorTitle: string = criticalError ? errorInfoConfig.critical.title : errorInfoConfig.search.title;
+  const errorSubtitle: string = criticalError ? errorInfoConfig.critical.subtitle : errorInfoConfig.search.subtitle;
 
   function refreshPage(){
     window.location.reload();

@@ -1,18 +1,18 @@
-import React, { ChangeEvent, SyntheticEvent } from 'react';
+import React, { ChangeEvent, Dispatch, SyntheticEvent } from 'react';
 import { infoMessages } from '../../utils/constants';
 
 type Props = {
-  isLoading: boolean,
-  isSortByBirthday: boolean,
-  onSortBnt: () => void,
-  onSearch: (input: string) => void,
-  setSearchError: (arg0: boolean) => void,
+  isLoading: boolean;
+  isSortByBirthday: boolean;
+  onSortBnt: () => void;
+  onSearch: (input: string) => void;
+  setSearchError: Dispatch<boolean>;
 }
 
 const SearchForm: React.FC<Props> = ({ isLoading, isSortByBirthday, onSortBnt, onSearch, setSearchError }) => {
-  const [input, setInput] = React.useState('');
-  const [validityError, setValidityError] = React.useState('');
-  const sortBtnClassName = `app__button search__btn search__btn_action_sort ${isSortByBirthday ? 'search__btn_active' : ''}`;
+  const [input, setInput] = React.useState<string>('');
+  const [validityError, setValidityError] = React.useState<string>('');
+  const sortBtnClassName: string = `app__button search__btn search__btn_action_sort ${isSortByBirthday ? 'search__btn_active' : ''}`;
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const input = e.target;

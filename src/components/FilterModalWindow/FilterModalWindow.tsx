@@ -2,13 +2,13 @@ import React from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 
 type Props = {
-  isOpen: boolean,
-  onClose: () => void,
-  setChecked: (arg0: boolean) => void,
+  isOpen: boolean;
+  onClose: () => void;
+  setChecked: (arg0: boolean) => void;
 }
 
 const FilterModalWindow: React.FC<Props> = ({ isOpen, onClose, setChecked }) => {
-  const [isBdayChecked, setIsBdayChecked] = React.useState(false);
+  const [isBdayChecked, setIsBdayChecked] = React.useState<boolean>(false);
 
   function handleRadioClick() {
     setIsBdayChecked(!isBdayChecked);

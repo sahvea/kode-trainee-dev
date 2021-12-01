@@ -4,14 +4,23 @@ import SkeletonCardList from '../Skeleton/SkeletonCardList';
 import Divider from '../Divider/Divider';
 import { sortArrayByBirthday } from '../../utils/utils';
 import { nextYear } from '../../utils/constants';
+import { EmployeeData, ParsedEmployeeData } from '../../utils/types';
 
-function Staff(props) {
-  const arraySortedByAlphabet = props.staffMembers.sort((a, b) => a.firstName.localeCompare(b.firstName));
+type Props = {
+  staffMembers: EmployeeData[];
+  isLoading: boolean;
+  isLocationChanged: boolean;
+  isSortByBirthday: boolean;
+  onCardClick: (arg: ParsedEmployeeData) => void;
+}
 
-  const [thisYearBirthdays, nextYearBirthdays] = props.staffMembers
-    .reduce((result, element) => {
-      const today = new Date();
-      const birthDate = new Date(element.birthday);
+const Staff: React.FC<Props> = ({ staffMembers, isLoading, isLocationChanged, isSortByBirthday, onCardClick }) => {
+  const arraySortedByAlphabet: EmployeeData[] = staffMembers.sort((a, b) => a.firstName.localeCompare(b.firstName));
+
+  const [thisYearBirthdays, nextYearBirthdays] = staffMembers
+    .reduce((result: [EmployeeData[], EmployeeData[]], element: EmployeeData) => {
+      const today: Date = new Date();
+      const birthDate: Date = new Date(element.birthday);
 
       result[
         birthDate.getMonth() < today.getMonth()
@@ -25,16 +34,16 @@ function Staff(props) {
       [], [] // по дефолту массивы thisYearBirthdays/nextYearBirthdays пусты
     ]);
 
-  const staffArrayWithBdThisYear = thisYearBirthdays.sort(sortArrayByBirthday);
-  const staffArrayWithBdNextYear = nextYearBirthdays.sort(sortArrayByBirthday);
+  const staffArrayWithBdThisYear: EmployeeData[] = thisYearBirthdays.sort(sortArrayByBirthday);
+  const staffArrayWithBdNextYear: EmployeeData[] = nextYearBirthdays.sort(sortArrayByBirthday);
 
 
   return (
     <section className="staff app__section">
       {
-        props.isLoading || props.isLocationChanged
+        isLoading || isLocationChanged
           ? <SkeletonCardList />
-          : props.isSortByBirthday
+          : isSortByBirthday
             ? <>
                 <ul className="staff__list">
                   { staffArrayWithBdThisYear.map(item => (
@@ -42,7 +51,7 @@ function Staff(props) {
                         <EmployeeCard
                           employee={item}
                           isBirthDate={true}
-                          onCardClick={props.onCardClick}
+                          onCardClick={onCardClick}
                         />
                       </li>
                   )) }
@@ -58,7 +67,7 @@ function Staff(props) {
                           <EmployeeCard
                             employee={item}
                             isBirthDate={true}
-                            onCardClick={props.onCardClick}
+                            onCardClick={onCardClick}
                           />
                         </li>
                       )) }
@@ -73,7 +82,7 @@ function Staff(props) {
                     <EmployeeCard
                       employee={item}
                       isBirthDate={false}
-                      onCardClick={props.onCardClick}
+                      onCardClick={onCardClick}
                     />
                   </li>
                 )) }

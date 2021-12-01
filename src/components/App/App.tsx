@@ -5,20 +5,20 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import { api } from '../../utils/api';
 import { filterArrayByName } from '../../utils/utils';
-import { EmployeeData } from '../../utils/types';
+import { EmployeeData, ParsedEmployeeData } from '../../utils/types';
 
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isFilterModalWindowOpen, setIsFilterModalWindowOpen] = React.useState(false);
-  const [isImageModalWindowOpen, setIsImageModalWindowOpen] = React.useState(false);
-  const [isCriticalError, setIsCriticalError] = React.useState(false);
-  const [isSearchError, setIsSearchError] = React.useState(false);
-  const [isSearched, setIsSearched] = React.useState(false);
-  const [staffMembers, setStaffMembers] = React.useState([]);
-  const [searchedStaffMembers, setSearchedStaffMembers] = React.useState([]);
-  const [selectedEmployeeData, setSelectedEmployeeData] = React.useState({});
-  const [isOnline, setIsOnline] = React.useState(window.navigator.onLine);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isFilterModalWindowOpen, setIsFilterModalWindowOpen] = React.useState<boolean>(false);
+  const [isImageModalWindowOpen, setIsImageModalWindowOpen] = React.useState<boolean>(false);
+  const [isCriticalError, setIsCriticalError] = React.useState<boolean>(false);
+  const [isSearchError, setIsSearchError] = React.useState<boolean>(false);
+  const [isSearched, setIsSearched] = React.useState<boolean>(false);
+  const [staffMembers, setStaffMembers] = React.useState<EmployeeData[]>([]);
+  const [searchedStaffMembers, setSearchedStaffMembers] = React.useState<EmployeeData[]>([]);
+  const [selectedEmployeeData, setSelectedEmployeeData] = React.useState<ParsedEmployeeData | any>({});
+  const [isOnline, setIsOnline] = React.useState<boolean>(window.navigator.onLine);
 
   React.useEffect(() => {
     const updateNetwork = () => {
@@ -57,7 +57,7 @@ const App: React.FC = () => {
   }, [isOnline]);
 
   function handleSearch(keyword: string) {
-    const filteredStaffMembers = filterArrayByName(staffMembers, keyword);
+    const filteredStaffMembers: EmployeeData[] = filterArrayByName(staffMembers, keyword);
     setSearchedStaffMembers(filteredStaffMembers);
 
     if (!keyword) {
@@ -67,7 +67,7 @@ const App: React.FC = () => {
     }
   }
 
-  function handleEmployeeCardClick(userData: EmployeeData[]) {
+  function handleEmployeeCardClick(userData: ParsedEmployeeData) {
     setSelectedEmployeeData(userData);
   }
 

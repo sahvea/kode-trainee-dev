@@ -1,15 +1,15 @@
 import React from 'react';
 
 type Props = {
-  id: number,
-  tag: string,
-  name: string,
-  active: number,
-  onClick: (id: number, tag: string) => void,
+  id: number;
+  tag: string;
+  name: string;
+  active: number;
+  onClick: (id: number, tag: string) => void;
 }
 
 const TabBarItem: React.FC<Props> = ({ id, tag, name, active, onClick }) => {
-  const buttonClassName = `app__button tab-bar__button ${id === active ? "tab-bar__button_active" : ""}`;
+  const buttonClassName: string = `app__button tab-bar__button ${id === active ? "tab-bar__button_active" : ""}`;
 
   function handleClick() {
     onClick(id, tag);
