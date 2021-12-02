@@ -18,7 +18,7 @@ export interface ParsedEmployeeData {
   post: string;
   birthDate: string;
   phone: string;
-}[]
+}
 
 export type TabArray = {
   id: number;

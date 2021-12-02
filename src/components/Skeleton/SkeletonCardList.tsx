@@ -1,11 +1,12 @@
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-function SkeletonCardList() {
+const SkeletonCardList: React.FC = () => {
   return (
     <ul className="staff__list">
       {Array(10)
-        .fill()
+        .fill(null)
         .map((item, index) => (
           <li className="staff__list-item" key={index}>
             <article className="employee">

@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, MouseEvent } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
@@ -83,31 +83,6 @@ const App: React.FC = () => {
     setIsFilterModalWindowOpen(false);
     setIsImageModalWindowOpen(false);
   }
-
-  // закрытие модального окна по Esc
-  React.useEffect(() => {
-    const handleEscClose = (evt: KeyboardEvent<HTMLInputElement>) => {
-      if (evt.key === 'Escape') {
-        closeModalWindows();
-      }
-    }
-    document.addEventListener('keydown', () => handleEscClose);
-
-    return () => document.removeEventListener('keydown', () => handleEscClose);
-  }, []);
-
-  // закрытие модального окна по клику вне окна
-  React.useEffect(() => {
-    const handleOverlayClose = (evt: MouseEvent<HTMLElement>) => {
-      if ((evt.target as any).classList.contains('modal-window_opened')) {
-        closeModalWindows();
-      }
-    }
-    document.addEventListener('click', () => handleOverlayClose);
-
-    return () => document.removeEventListener('click', () => handleOverlayClose);
-  }, []);
-
 
   return (
     <Routes>
